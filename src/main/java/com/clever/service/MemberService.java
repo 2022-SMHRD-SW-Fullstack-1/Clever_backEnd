@@ -11,9 +11,12 @@ public class MemberService {
 	@Autowired
 	MemberMapper memberMapper;
 	
-	public int joinMember(Member mem_info) {
-		
-		return memberMapper.joinMember(mem_info);
+	public int joinMember(Member join_info) {
+		return memberMapper.joinMember(join_info);
+	}
+	
+	public Member loginMember(Member login_info) {
+		return memberMapper.loginMember(login_info);
 	}
 	
 

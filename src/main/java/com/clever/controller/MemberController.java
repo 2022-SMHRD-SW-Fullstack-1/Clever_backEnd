@@ -17,12 +17,12 @@ public class MemberController {
 	MemberService memberService;
 	
 	@PostMapping("/join")
-	public int joinMember(@RequestBody Member mem_info) {
-		return memberService.joinMember(mem_info);
+	public int joinMember(@RequestBody Member join_info) {
+		return memberService.joinMember(join_info);
 	}
 	
 	@PostMapping("/login")
-	public void loginMember(@RequestBody Member mem_info) {
-		
+	public Member loginMember(@RequestBody Member login_info) {
+		return memberService.loginMember(login_info);
 	}
 }
