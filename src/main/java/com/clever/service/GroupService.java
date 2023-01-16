@@ -1,5 +1,7 @@
 package com.clever.service;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,7 @@ public class GroupService {
 	@Autowired
 	GroupMapper groupMapper;
 	public int addGroup(Group group_info) {
+
 		return groupMapper.addGroup(group_info);
 	}
 }
