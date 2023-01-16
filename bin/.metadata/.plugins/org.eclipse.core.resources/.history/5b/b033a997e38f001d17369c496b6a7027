@@ -1,0 +1,14 @@
+#Tomcat port
+server.port = 8090
+
+#context path
+server.servlet.context-path=/clever
+
+#
+
+
+#oracle
+spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+spring.datasource.url=jdbc:oracle:thin:@project-db-stu.ddns.net:1524/xe
+spring.datasource.username=campus_k_1014_1
+spring.datasource.password=smhrd1

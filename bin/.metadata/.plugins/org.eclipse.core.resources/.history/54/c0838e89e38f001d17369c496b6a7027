@@ -1,0 +1,5 @@
+#Tomcat port
+server.port = 8090
+
+#context path
+server.servlet.context-path=/clever
