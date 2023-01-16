@@ -16,7 +16,7 @@ public class ToDo {
 	String todo_dt;
 	String todo_repeat;
 	String todo_method;
-	int mem_id;
+	String mem_id;
 	String mem_name;
 	
 }

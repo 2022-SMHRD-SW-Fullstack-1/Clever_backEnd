@@ -15,7 +15,7 @@ public class Notice {
 	String notice_content;
 	String notice_dt;
 	String notice_photo;
-	int mem_id;
+	String mem_id;
 	String mem_name;
 	
 }
