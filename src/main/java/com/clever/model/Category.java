@@ -13,6 +13,5 @@ public class Category {
 	String cate_type;
 	String cate_name;
 	int group_seq;
-	int count;
 	
 }
