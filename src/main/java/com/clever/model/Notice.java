@@ -17,6 +17,5 @@ public class Notice {
 	String notice_photo;
 	int mem_id;
 	String mem_name;
-	int count;
 	
 }
