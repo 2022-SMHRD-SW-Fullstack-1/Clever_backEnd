@@ -18,5 +18,6 @@ public class ToDo {
 	String todo_method;
 	int mem_id;
 	String mem_name;
+	int count;
 	
 }
