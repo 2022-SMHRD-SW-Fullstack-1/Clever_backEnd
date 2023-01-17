@@ -10,6 +10,7 @@ import com.clever.model.Category;
 import com.clever.model.Group;
 import com.clever.model.Member;
 import com.clever.model.Notice;
+import com.clever.model.ToDo;
 
 @Service
 public class AndroidService {
@@ -58,6 +59,10 @@ public class AndroidService {
 	
 	public Notice getNoticeDetail(Notice notice) {
 		return androidMapper.getNoticeDetail(notice);
+	}
+	
+	public List<ToDo> getToDo(int cate_seq) {
+		return androidMapper.getToDo(cate_seq);
 	}
 	
 	

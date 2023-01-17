@@ -10,6 +10,7 @@ import com.clever.model.Category;
 import com.clever.model.Group;
 import com.clever.model.Member;
 import com.clever.model.Notice;
+import com.clever.model.ToDo;
 
 @Mapper
 public interface AndroidMapper {
@@ -46,6 +47,9 @@ public interface AndroidMapper {
 	
 	@Select("SELECT tn.notice_seq, tn.cate_seq, tn.notice_content, tn.notice_title, tn.notice_dt, tn.notice_photo, tm.mem_id, tm.mem_name FROM tbl_notice tn LEFT JOIN tbl_member tm ON tn.mem_id = tm.mem_id WHERE notice_seq = #{notice_seq}")
 	public Notice getNoticeDetail(Notice notice);
+	
+	@Select("SELECT * FROM tbl_todo WHERE cate_seq = #{cate_seq}")
+	public List<ToDo> getToDo(int cate_seq);
 	
 	
 

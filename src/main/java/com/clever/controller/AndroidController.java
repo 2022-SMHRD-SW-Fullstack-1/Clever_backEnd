@@ -12,6 +12,7 @@ import com.clever.model.Category;
 import com.clever.model.Group;
 import com.clever.model.Member;
 import com.clever.model.Notice;
+import com.clever.model.ToDo;
 import com.clever.service.AndroidService;
 
 @RestController
@@ -74,9 +75,14 @@ public class AndroidController {
 		return androidService.getNotice(notice);
 	}
 	
-	@PostMapping("android/getNoticeDetail")
+	@PostMapping("/android/getNoticeDetail")
 	public Notice getNoticeDetail(@RequestBody Notice notice) {
 		return androidService.getNoticeDetail(notice);
+	}
+	
+	@PostMapping("/android/getToDo")
+	public List<ToDo> getToDo(@RequestBody ToDo todo) {
+		return androidService.getToDo(todo.getCate_seq());
 	}
 	
 	
