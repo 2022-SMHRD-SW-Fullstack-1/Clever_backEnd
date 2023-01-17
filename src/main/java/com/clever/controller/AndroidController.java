@@ -12,6 +12,8 @@ import com.clever.model.Category;
 import com.clever.model.Group;
 import com.clever.model.Member;
 import com.clever.model.Notice;
+import com.clever.model.ToDo;
+import com.clever.model.ToDoComplete;
 import com.clever.service.AndroidService;
 
 @RestController
@@ -74,11 +76,35 @@ public class AndroidController {
 		return androidService.getNotice(notice);
 	}
 	
-	@PostMapping("android/getNoticeDetail")
+	@PostMapping("/android/getNoticeDetail")
 	public Notice getNoticeDetail(@RequestBody Notice notice) {
 		return androidService.getNoticeDetail(notice);
 	}
 	
+	@PostMapping("/android/getToDoList")
+	public List<ToDo> getToDoList(@RequestBody ToDo todo) {
+		return androidService.getToDoList(todo.getCate_seq());
+	}
+	
+	@PostMapping("/android/getToDoComplete")
+	public List<ToDoComplete> getToDoComplete(@RequestBody ToDoComplete cmpl_info){
+		return androidService.getToDoComplete(cmpl_info.getCate_seq());
+	}
+	
+	@PostMapping("/android/getToDo")
+	public ToDo getToDo(@RequestBody ToDo todo_info) {
+		return androidService.getToDo(todo_info);
+	}
+	
+	@PostMapping("/android/getToDoCmplList")
+	public List<ToDoComplete> getToDoCmplList(@RequestBody ToDoComplete cmpl_info){
+		return androidService.getToDoCmplList(cmpl_info.getTodo_seq());
+	}
+	
+	@PostMapping("/android/getCode")
+	public String getCode(@RequestBody Member mem_info) throws Exception {
+		return androidService.getCode(mem_info);
+	}
 	
 	
 	

@@ -7,17 +7,17 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ToDo {
+public class ToDoComplete {
 
+	int cmpl_seq;
 	int todo_seq;
+	String mem_id;
+	String cmpl_time;
+	String cmpl_img;
+	String cmpl_memo;
+	String cmpl_strange;
 	int cate_seq;
 	String todo_title;
-	String todo_content;
-	String todo_dt;
-	String todo_repeat;
-	String todo_method;
-	String mem_id;
 	String mem_name;
-	String cate_name;
 	
 }
