@@ -31,7 +31,6 @@ public class EmailController {
 		CheckEmail userEmail = gson.fromJson(email, CheckEmail.class);
 		
 		String code = emailService.sendSimpleMessage(userEmail.getCheckEmail());
-		
 
 		System.out.println("인증코드 : " + code);
 				

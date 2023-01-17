@@ -49,11 +49,22 @@ public interface AndroidMapper {
 	@Select("SELECT tn.notice_seq, tn.cate_seq, tn.notice_content, tn.notice_title, tn.notice_dt, tn.notice_photo, tm.mem_id, tm.mem_name FROM tbl_notice tn LEFT JOIN tbl_member tm ON tn.mem_id = tm.mem_id WHERE notice_seq = #{notice_seq}")
 	public Notice getNoticeDetail(Notice notice);
 	
-	@Select("SELECT * FROM tbl_todo WHERE cate_seq = #{cate_seq}")
-	public List<ToDo> getToDo(int cate_seq);
+	@Select("SELECT * FROM tbl_todo tt LEFT JOIN tbl_member tm ON tt.mem_id = tm.mem_id WHERE cate_seq = #{cate_seq}")
+	public List<ToDo> getToDoList(int cate_seq);
 	
 	@Select("SELECT * FROM tbl_complete tc LEFT JOIN tbl_member tm ON tc.mem_id = tm.mem_id WHERE cate_seq = #{cate_seq}")
 	public List<ToDoComplete> getToDoComplete(int cate_seq);
 	
+	@Select("SELECT todo_title FROM tbl_todo WHERE todo_seq = #{todo_seq}")
+	public String getTodoTitle(int todo_seq);
+	
+	@Select("SELECT * FROM tbl_todo td LEFT JOIN tbl_category tc ON td.cate_seq = tc.cate_seq WHERE todo_seq = #{todo_seq}")
+	public ToDo getToDo(ToDo todo_info);
+	
+	@Select("SELECT * FROM tbl_complete tc LEFT JOIN tbl_member tm ON tc.mem_id = tm.mem_id WHERE todo_seq = #{todo_seq}")
+	public List<ToDoComplete> getToDoCmplList(int todo_seq);
+	
+	@Select("SELECT * FROM tbl_member WHERE mem_id = #{mem_id} AND mem_email = #{mem_email}")
+	public Member getCode(Member mem_info);
 
 }

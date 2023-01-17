@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.clever.controller.EmailController;
 import com.clever.mapper.AndroidMapper;
 import com.clever.model.Category;
 import com.clever.model.Group;
@@ -18,6 +19,9 @@ public class AndroidService {
 	
 	@Autowired
 	AndroidMapper androidMapper;
+	
+	@Autowired
+	EmailService emailService;
 
 	// 회원가입
 	public int joinMember(Member join_info) {
@@ -62,12 +66,45 @@ public class AndroidService {
 		return androidMapper.getNoticeDetail(notice);
 	}
 	
-	public List<ToDo> getToDo(int cate_seq) {
-		return androidMapper.getToDo(cate_seq);
+	public List<ToDo> getToDoList(int cate_seq) {
+		return androidMapper.getToDoList(cate_seq);
 	}
 	
 	public List<ToDoComplete> getToDoComplete(int cate_seq){
-		return androidMapper.getToDoComplete(cate_seq);
+		
+		List<ToDoComplete> getTodo = androidMapper.getToDoComplete(cate_seq);
+		
+		for(int i=0; i<getTodo.size(); i++) {
+			int todo_seq = getTodo.get(i).getTodo_seq();
+			String title = androidMapper.getTodoTitle(todo_seq);
+			getTodo.get(i).setTodo_title(title);
+		}
+		return getTodo;
+	}
+	
+	public ToDo getToDo(ToDo todo_info) {
+		return androidMapper.getToDo(todo_info);
+	}
+	
+	public List<ToDoComplete> getToDoCmplList(int todo_seq){
+		return androidMapper.getToDoCmplList(todo_seq);
+	}
+	
+	public String getCode(Member mem_info) throws Exception {
+		Member result = androidMapper.getCode(mem_info);
+		
+		System.out.println("받아온 정보 : " + result);
+		
+		if(result != null) {
+			System.out.println("받아온 정보 : " + result.getMem_email());
+			
+			String code = emailService.sendSimpleMessage(result.getMem_email());
+			System.out.println("코드 : " + code);
+			
+			return code;
+		}else {
+			return "휴대폰번호 또는 이메일을 확인해 주세요";
+		}
 	}
 	
 	

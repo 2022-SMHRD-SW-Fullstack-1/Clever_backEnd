@@ -81,9 +81,9 @@ public class AndroidController {
 		return androidService.getNoticeDetail(notice);
 	}
 	
-	@PostMapping("/android/getToDo")
-	public List<ToDo> getToDo(@RequestBody ToDo todo) {
-		return androidService.getToDo(todo.getCate_seq());
+	@PostMapping("/android/getToDoList")
+	public List<ToDo> getToDoList(@RequestBody ToDo todo) {
+		return androidService.getToDoList(todo.getCate_seq());
 	}
 	
 	@PostMapping("/android/getToDoComplete")
@@ -91,6 +91,20 @@ public class AndroidController {
 		return androidService.getToDoComplete(cmpl_info.getCate_seq());
 	}
 	
+	@PostMapping("/android/getToDo")
+	public ToDo getToDo(@RequestBody ToDo todo_info) {
+		return androidService.getToDo(todo_info);
+	}
+	
+	@PostMapping("/android/getToDoCmplList")
+	public List<ToDoComplete> getToDoCmplList(@RequestBody ToDoComplete cmpl_info){
+		return androidService.getToDoCmplList(cmpl_info.getTodo_seq());
+	}
+	
+	@PostMapping("/android/getCode")
+	public String getCode(@RequestBody Member mem_info) throws Exception {
+		return androidService.getCode(mem_info);
+	}
 	
 	
 	
