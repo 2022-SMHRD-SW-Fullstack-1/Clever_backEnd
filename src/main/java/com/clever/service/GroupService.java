@@ -1,5 +1,6 @@
 package com.clever.service;
 
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,11 @@ public class GroupService {
 		group_info.setGroup_serial(serialNum());
 		return groupMapper.addGroup(group_info);
 	}
+	
+	public List<Group> getGroupList(String mem_id){
+		return groupMapper.getGroupList(mem_id);
+	}
+	
 	public String serialNum() {
 		
 		int serialSize = 1;
