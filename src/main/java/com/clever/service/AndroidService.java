@@ -11,6 +11,7 @@ import com.clever.model.Group;
 import com.clever.model.Member;
 import com.clever.model.Notice;
 import com.clever.model.ToDo;
+import com.clever.model.ToDoComplete;
 
 @Service
 public class AndroidService {
@@ -63,6 +64,10 @@ public class AndroidService {
 	
 	public List<ToDo> getToDo(int cate_seq) {
 		return androidMapper.getToDo(cate_seq);
+	}
+	
+	public List<ToDoComplete> getToDoComplete(int cate_seq){
+		return androidMapper.getToDoComplete(cate_seq);
 	}
 	
 	

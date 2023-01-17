@@ -11,6 +11,7 @@ import com.clever.model.Group;
 import com.clever.model.Member;
 import com.clever.model.Notice;
 import com.clever.model.ToDo;
+import com.clever.model.ToDoComplete;
 
 @Mapper
 public interface AndroidMapper {
@@ -51,6 +52,8 @@ public interface AndroidMapper {
 	@Select("SELECT * FROM tbl_todo WHERE cate_seq = #{cate_seq}")
 	public List<ToDo> getToDo(int cate_seq);
 	
+	@Select("SELECT * FROM tbl_complete tc LEFT JOIN tbl_member tm ON tc.mem_id = tm.mem_id WHERE cate_seq = #{cate_seq}")
+	public List<ToDoComplete> getToDoComplete(int cate_seq);
 	
 
 }

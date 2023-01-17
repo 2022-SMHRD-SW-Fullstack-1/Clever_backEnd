@@ -17,5 +17,6 @@ public class ToDoComplete {
 	String cmpl_memo;
 	String cmpl_strange;
 	int cate_seq;
+	String todo_title;
 	
 }

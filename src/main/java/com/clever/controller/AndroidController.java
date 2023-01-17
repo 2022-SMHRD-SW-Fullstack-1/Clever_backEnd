@@ -13,6 +13,7 @@ import com.clever.model.Group;
 import com.clever.model.Member;
 import com.clever.model.Notice;
 import com.clever.model.ToDo;
+import com.clever.model.ToDoComplete;
 import com.clever.service.AndroidService;
 
 @RestController
@@ -83,6 +84,11 @@ public class AndroidController {
 	@PostMapping("/android/getToDo")
 	public List<ToDo> getToDo(@RequestBody ToDo todo) {
 		return androidService.getToDo(todo.getCate_seq());
+	}
+	
+	@PostMapping("/android/getToDoComplete")
+	public List<ToDoComplete> getToDoComplete(@RequestBody ToDoComplete cmpl_info){
+		return androidService.getToDoComplete(cmpl_info.getCate_seq());
 	}
 	
 	
