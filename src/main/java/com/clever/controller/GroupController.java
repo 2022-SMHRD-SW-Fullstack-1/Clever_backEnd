@@ -20,6 +20,11 @@ public class GroupController {
 		
 		return groupService.addGroup(group_info);
 	}
+	
+	@PostMapping("/getgrouplist")
+	public void getGroupList(@RequestBody String mem_id) {
+		System.out.println(mem_id);
+	}
 		
 }
 
