@@ -1,6 +1,5 @@
 package com.clever.controller;
 
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.clever.model.Group;
 import com.clever.service.GroupService;
+import java.util.List;
 
 @RestController
 public class GroupController {
@@ -22,8 +22,10 @@ public class GroupController {
 	}
 	
 	@PostMapping("/getgrouplist")
-	public void getGroupList(@RequestBody String mem_id) {
-		System.out.println(mem_id);
+	public List<Group> getGroupList(@RequestBody String mem_id) {
+		mem_id= mem_id.replaceAll("=", "");
+		List<Group> groupList = groupService.getGroupList(mem_id);
+		return groupList;
 	}
 		
 }
