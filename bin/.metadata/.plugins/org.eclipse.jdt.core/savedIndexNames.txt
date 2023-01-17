@@ -1,0 +1,2 @@
+INDEX VERSION 1.131+C:\Users\smhrd\Desktop\Clever\back_end\clever\.metadata\.plugins\org.eclipse.jdt.core
+3952132911.index
