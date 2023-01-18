@@ -16,7 +16,7 @@ public class MailConfig {
 		
 		javaMailSender.setHost("smtp.gmail.com");
 		javaMailSender.setUsername("hyeongjoopark03242@gmail.com");
-		javaMailSender.setPassword("Clever1234!");
+		javaMailSender.setPassword("lrbmylnymrnywafo");
 		
 		javaMailSender.setPort(587);
 		
@@ -31,8 +31,8 @@ public class MailConfig {
         properties.setProperty("mail.smtp.auth", "true");
         properties.setProperty("mail.smtp.starttls.enable", "true");
         properties.setProperty("mail.debug", "true");
-        properties.setProperty("mail.smtp.ssl.trust","smtp.gmail.com");
-        properties.setProperty("mail.smtp.ssl.enable","true");
+        properties.setProperty("mail.smtp.starttls.trust","smtp.gmail.com");
+        properties.setProperty("mail.smtp.starttls.enable","true");
         
         return properties;
     }
