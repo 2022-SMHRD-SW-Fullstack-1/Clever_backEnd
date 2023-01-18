@@ -74,5 +74,8 @@ public interface AndroidMapper {
 	
 	@Delete("DELETE tbl_group ")
 	public int groupOut(Group group_info);
+	
+	@Insert("INSERT INTO tbl_complete VALUES (null, #{todo_seq}, #{mem_id}, now(), #{cmpl_img}, #{cmpl_memo}, #{cmpl_strange}, #{cate_seq})")
+	public int todoCmpl(ToDoComplete cmpl_info);
 
 }

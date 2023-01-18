@@ -116,6 +116,11 @@ public class AndroidController {
 		return androidService.groupOut(group_info);
 	}
 	
+	@PostMapping("/android/todoCmpl")
+	public int todoCmpl(@RequestBody ToDoComplete cmpl_info) {
+		return androidService.todoCmpl(cmpl_info);
+	}
+	
 	
 
 }

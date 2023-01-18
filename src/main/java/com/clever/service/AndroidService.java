@@ -112,6 +112,9 @@ public class AndroidService {
 		return androidMapper.groupOut(group_info);
 	}
 	
+	public int todoCmpl(ToDoComplete cmpl_info) {
+		return androidMapper.todoCmpl(cmpl_info);
+	}
 	
 	
 }
