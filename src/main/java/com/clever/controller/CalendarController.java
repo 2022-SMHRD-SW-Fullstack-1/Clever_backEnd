@@ -32,19 +32,22 @@ public class CalendarController {
 	
 	
 	@RequestMapping(value = "/saveArrScheduleInfo", method = RequestMethod.POST)
-	public String saveArrScheduleInfo(@RequestBody HashMap<String,Object> saveArrScheduleInfo)throws Exception{	
+	
+	//public int saveArrScheduleInfo(@RequestBody HashMap<String,Object> saveArrScheduleInfo)throws Exception{	
+	public void saveArrScheduleInfo(@RequestBody ArrayList<CalendarInput> saveArrScheduleInfo)throws Exception{	
+		System.out.println("컨트롤러"+saveArrScheduleInfo);
 		
+//		
+//		System.out.println("받은것 :"+ saveArrScheduleInfo);
+//		System.out.println(saveArrScheduleInfo.get("saveArrScheduleInfo"));
+//		System.out.println(saveArrScheduleInfo.get("saveArrScheduleInfo"));
+//		ArrayList<Object> o = (ArrayList<Object>) saveArrScheduleInfo.get("saveArrScheduleInfo"); 
+//		System.out.println(o.get(0));
+////		calendarService.addShcedule(saveArrScheduleInfo);
 		
+		//calendarService.addShcedule(saveArrScheduleInfo)
+		calendarService.addShcedule(saveArrScheduleInfo);
 		
-		System.out.println("받은것 :"+ saveArrScheduleInfo);
-		System.out.println(saveArrScheduleInfo.get("saveArrScheduleInfo"));
-		System.out.println(saveArrScheduleInfo.get("saveArrScheduleInfo"));
-		ArrayList<Object> o = (ArrayList<Object>) saveArrScheduleInfo.get("saveArrScheduleInfo"); 
-		System.out.println(o.get(0));
-//		calendarService.addShcedule(saveArrScheduleInfo);
-		
-		
-		return "";
 	}
 
 }
