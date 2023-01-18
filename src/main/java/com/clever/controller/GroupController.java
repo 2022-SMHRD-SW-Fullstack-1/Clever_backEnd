@@ -23,7 +23,7 @@ public class GroupController {
 	}
 	
 	@PostMapping("/joinManager")
-	public int joinManager(@RequestBody Group group_info) throws Exception{
+	public int joinManager(@RequestBody Group group_info){
 		return groupService.joinManager(group_info);
 	}
 	
