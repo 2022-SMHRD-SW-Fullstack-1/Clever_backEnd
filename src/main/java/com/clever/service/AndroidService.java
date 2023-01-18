@@ -93,17 +93,14 @@ public class AndroidService {
 	public String getCode(Member mem_info) throws Exception {
 		Member result = androidMapper.getCode(mem_info);
 		
-		System.out.println("받아온 정보 : " + result);
-		
 		if(result != null) {
-			System.out.println("받아온 정보 : " + result.getMem_email());
 			
 			String code = emailService.sendSimpleMessage(result.getMem_email());
 			System.out.println("코드 : " + code);
 			
 			return code;
 		}else {
-			return "휴대폰번호 또는 이메일을 확인해 주세요";
+			return "1";
 		}
 	}
 	
