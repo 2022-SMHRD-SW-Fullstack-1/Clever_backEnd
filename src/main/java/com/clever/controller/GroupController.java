@@ -32,6 +32,6 @@ public class GroupController {
 	public int deleteGroup(@RequestBody Group group_info) {
 		 return groupService.deleteGroup(group_info);
 	}
-		
+	
 }
 
