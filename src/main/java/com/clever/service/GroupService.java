@@ -22,6 +22,10 @@ public class GroupService {
 		return groupMapper.getGroupList(mem_id);
 	}
 	
+	public int deleteGroup(Group group_info) {
+		return groupMapper.deleteGroup(group_info);
+	}
+	
 	public String serialNum() {
 		
 		int serialSize = 1;

@@ -27,6 +27,11 @@ public class GroupController {
 		List<Group> groupList = groupService.getGroupList(mem_id);
 		return groupList;
 	}
+	
+	@PostMapping("/deletegroup")
+	public int deleteGroup(@RequestBody Group group_info) {
+		 return groupService.deleteGroup(group_info);
+	}
 		
 }
 
