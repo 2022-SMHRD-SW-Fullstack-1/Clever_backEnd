@@ -18,6 +18,10 @@ public class GroupService {
 		return groupMapper.addGroup(group_info);
 	}
 	
+	public int joinManager(Group group_info) {
+		return groupMapper.joinManager(group_info);
+	}
+	
 	public List<Group> getGroupList(String mem_id){
 		return groupMapper.getGroupList(mem_id);
 	}
@@ -46,4 +50,6 @@ public class GroupService {
 		String group_serial = buf.toString();
 		return group_serial;
 }
+	
+
 }

@@ -17,8 +17,14 @@ public class GroupController {
 	
 	@PostMapping("/addgroup")
 	public int addGroup(@RequestBody Group group_info) {
-		
-		return groupService.addGroup(group_info);
+		groupService.addGroup(group_info);
+		int seq = group_info.getGroup_seq();
+		return seq;
+	}
+	
+	@PostMapping("/joinManager")
+	public int joinManager(@RequestBody Group group_info) throws Exception{
+		return groupService.joinManager(group_info);
 	}
 	
 	@PostMapping("/getgrouplist")
@@ -32,6 +38,7 @@ public class GroupController {
 	public int deleteGroup(@RequestBody Group group_info) {
 		 return groupService.deleteGroup(group_info);
 	}
-	
+
+
 }
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clever.mapper.GroupMapper">
+	<insert id="addGroup" parameterType="com.clever.model.Group">
+		insert into tbl_group 
+		values(
+		null, 
+		#{group_name}, 
+		#{group_serial}, 
+		now(), 
+		#{mem_id});
+		<selectKey keyProperty="group_seq" keyColumn="group_seq" resultType="Integer" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+</mapper>
