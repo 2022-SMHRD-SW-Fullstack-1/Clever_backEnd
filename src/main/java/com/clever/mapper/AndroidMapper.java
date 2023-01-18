@@ -2,9 +2,11 @@ package com.clever.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.clever.model.Category;
 import com.clever.model.Group;
@@ -66,5 +68,11 @@ public interface AndroidMapper {
 	
 	@Select("SELECT * FROM tbl_member WHERE mem_id = #{mem_id} AND mem_email = #{mem_email}")
 	public Member getCode(Member mem_info);
+	
+	@Update("UPDATE tbl_member SET mem_pw = #{mem_pw} WHERE mem_id = #{mem_id}")
+	public int changePw(Member mem_info);
+	
+	@Delete("DELETE tbl_group ")
+	public int groupOut(Group group_info);
 
 }

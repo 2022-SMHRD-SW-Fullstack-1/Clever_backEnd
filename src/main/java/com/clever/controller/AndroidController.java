@@ -106,6 +106,15 @@ public class AndroidController {
 		return androidService.getCode(mem_info);
 	}
 	
+	@PostMapping("/android/changePw")
+	public int changePw(@RequestBody Member mem_info) {
+		return androidService.changePw(mem_info);
+	}
+	
+	@PostMapping("/android/groupOut")
+	public int groupOut(@RequestBody Group group_info) {
+		return androidService.groupOut(group_info);
+	}
 	
 	
 

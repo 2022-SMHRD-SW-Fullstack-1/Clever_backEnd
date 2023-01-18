@@ -104,6 +104,14 @@ public class AndroidService {
 		}
 	}
 	
+	public int changePw(Member mem_info) {
+		return androidMapper.changePw(mem_info);
+	}
+	
+	public int groupOut(Group group_info) {
+		return androidMapper.groupOut(group_info);
+	}
+	
 	
 	
 }
