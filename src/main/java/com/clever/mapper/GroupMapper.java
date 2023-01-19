@@ -26,5 +26,8 @@ public interface GroupMapper {
 	@Delete("delete from tbl_group where mem_id=#{mem_id} and group_seq=#{group_seq}")
 	public int deleteGroup(Group group_info);
 	
-
+	// 초대 코드(시리얼번호)
+	@Select("select group_serial from tbl_group where group_seq=#{grouq_seq}")
+	public String getInviteCode(int grouq_seq);
+	
 }
