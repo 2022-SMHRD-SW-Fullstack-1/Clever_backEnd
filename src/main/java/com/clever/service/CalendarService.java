@@ -2,6 +2,7 @@ package com.clever.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,28 +17,17 @@ public class CalendarService {
 	private CalendarMapper calendarMapper;
 	
 
-	public int addShcedule(ArrayList<CalendarInput> saveArrScheduleInfo) {
-		
+	public void insertSchedule(ArrayList<CalendarInput> saveArrScheduleInfo) {		
 
-		System.out.println("길이"+saveArrScheduleInfo.size());
-		System.out.println("타입"+saveArrScheduleInfo.get(0).getClass().getName());
-
-		for(int i=0; i<saveArrScheduleInfo.size(); i++) {
-		
+		for(int i=0; i<saveArrScheduleInfo.size(); i++) {		
 			
-			calendarMapper.addSchedule(saveArrScheduleInfo.get(i));
-			
-		}
-//		calendarService.addShcedule(saveArrScheduleInfo);
+			calendarMapper.insertSchedule(saveArrScheduleInfo.get(i));			
+		}       						
+	}
+	
+	public List<CalendarInput> getSchedule() {
 		
-		
-       
-      
-      
-		
-		
-		return 0;
-		
+		return calendarMapper.getSchedule();
 	}
 	
 

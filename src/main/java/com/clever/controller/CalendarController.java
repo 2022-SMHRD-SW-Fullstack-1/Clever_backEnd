@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,27 +27,22 @@ public class CalendarController {
 	@Autowired
 	private CalendarService calendarService;
 
-	//  public int addSchedule	(@RequestParam(value="saveArrScheduleInfo") List<CalendarInput> saveArrScheduleInfo) throws Exception
-	
 
 	
+
+	@GetMapping("/getSchedule")
+	public List<CalendarInput> getSchedule()throws Exception {					
+		return calendarService.getSchedule();
+	}
 	
-	@RequestMapping(value = "/saveArrScheduleInfo", method = RequestMethod.POST)
 	
-	//public int saveArrScheduleInfo(@RequestBody HashMap<String,Object> saveArrScheduleInfo)throws Exception{	
-	public void saveArrScheduleInfo(@RequestBody ArrayList<CalendarInput> saveArrScheduleInfo)throws Exception{	
+	
+	@RequestMapping(value = "/saveArrScheduleInfo", method = RequestMethod.POST)	
+	public void insertSchedule(@RequestBody ArrayList<CalendarInput> saveArrScheduleInfo)throws Exception{	
 		System.out.println("컨트롤러"+saveArrScheduleInfo);
 		
-//		
-//		System.out.println("받은것 :"+ saveArrScheduleInfo);
-//		System.out.println(saveArrScheduleInfo.get("saveArrScheduleInfo"));
-//		System.out.println(saveArrScheduleInfo.get("saveArrScheduleInfo"));
-//		ArrayList<Object> o = (ArrayList<Object>) saveArrScheduleInfo.get("saveArrScheduleInfo"); 
-//		System.out.println(o.get(0));
-////		calendarService.addShcedule(saveArrScheduleInfo);
-		
-		//calendarService.addShcedule(saveArrScheduleInfo)
-		calendarService.addShcedule(saveArrScheduleInfo);
+
+		calendarService.insertSchedule(saveArrScheduleInfo);
 		
 	}
 
