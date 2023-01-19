@@ -18,6 +18,10 @@ public class BoardController {
 		System.out.println(cate_info);
 	}
 	
+	@PostMapping("/countboardcategory")
+	public void countBoardCategory(@RequestBody Category cate_info) {
+		System.out.println(cate_info);
+	}
 	
 	public void getBoardCategory(@RequestBody Category cate_info) {
 		System.out.println(cate_info);
