@@ -30,24 +30,32 @@ public class GroupService {
 		return groupMapper.deleteGroup(group_info);
 	}
 	
+	public String getInviteCode(int group_seq) {
+		return groupMapper.getInviteCode(group_seq);
+	}
+	
 	public String serialNum() {
 		
-		int serialSize = 1;
-		final char[] possibleChar = {
-				'1','2','3','4','5','6','7','8','9','0','A','B','C','D','E','F',
-			     'G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V',
-			     'W','X','Y','Z'
-		};
-		final int possibleCharCnt = possibleChar.length;
-		String[] arr = new String[serialSize];
+		StringBuffer key = new StringBuffer();
 		Random rd = new Random();
-		int currentIndex = 0;
-		int i = 0;
-		StringBuffer buf = new StringBuffer(16);
-		for(i=8 ; i>0 ; i--) {
-			buf.append(possibleChar[rd.nextInt(possibleCharCnt)]);
+		
+		for(int i=0; i<8; i++) { // 인증코드 8자리
+			int index = rd.nextInt(3); // 0~2까지 랜덤, rd값에 따라 아래 switch 문이 실행됨
+			
+			switch (index) {
+				case 0:
+					key.append((char) ((int) (rd.nextInt(26)) + 97)); // 영어 소문자
+					// a~z ( ASCII 코드 : ex. (char)98='b' )
+					break;
+				case 1:
+					key.append((char) ((int) (rd.nextInt(26)) + 65)); // 영어 대문자
+					break;
+				case 2:
+					key.append((rd.nextInt(10))); // 숫자
+					break;	
+			}
 		}
-		String group_serial = buf.toString();
+		String group_serial = key.toString();
 		return group_serial;
 }
 	

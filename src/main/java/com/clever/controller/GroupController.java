@@ -28,15 +28,21 @@ public class GroupController {
 	}
 	
 	@PostMapping("/getgrouplist")
-	public List<Group> getGroupList(@RequestBody String mem_id) {
-		mem_id= mem_id.replaceAll("=", "");
-		List<Group> groupList = groupService.getGroupList(mem_id);
+	public List<Group> getGroupList(@RequestBody Group group_list) {
+
+		List<Group> groupList = groupService.getGroupList(group_list.getMem_id());
 		return groupList;
 	}
 	
 	@PostMapping("/deletegroup")
 	public int deleteGroup(@RequestBody Group group_info) {
 		 return groupService.deleteGroup(group_info);
+	}
+	
+	@PostMapping("/getinvitecode")
+	public String getInviteCode(@RequestBody Group group_info) {
+		int group_seq = group_info.getGroup_seq();
+		return groupService.getInviteCode(group_seq);
 	}
 
 
