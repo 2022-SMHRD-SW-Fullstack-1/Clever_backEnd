@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.clever.model.Attendance;
 import com.clever.model.Category;
 import com.clever.model.Group;
 import com.clever.model.Member;

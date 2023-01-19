@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.clever.controller.EmailController;
 import com.clever.mapper.AndroidMapper;
+import com.clever.model.Attendance;
 import com.clever.model.Category;
 import com.clever.model.Group;
 import com.clever.model.Member;

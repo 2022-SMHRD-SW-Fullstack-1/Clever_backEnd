@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.clever.model.Attendance;
 import com.clever.model.Category;
 import com.clever.model.Group;
 import com.clever.model.Member;
@@ -122,7 +123,10 @@ public class AndroidController {
 	}
 	
 	@PostMapping("/android/getAttendance")
-	public List<Attendance> getAttendance(@RequestBody att_info){
+	public List<Attendance> getAttendance(@RequestBody Attendance att_info){
+		System.out.println("받은 값 : " + att_info);
+		
+		System.out.println("반환 : " + androidService.getAttendance(att_info));
 		return androidService.getAttendance(att_info);
 	}
 	
