@@ -116,5 +116,9 @@ public class AndroidService {
 		return androidMapper.todoCmpl(cmpl_info);
 	}
 	
+	public List<Attendance> getAttendance(Attendance att_info){
+		return androidMapper.getAttendance(att_info);
+	}
+	
 	
 }

@@ -77,5 +77,10 @@ public interface AndroidMapper {
 	
 	@Insert("INSERT INTO tbl_complete VALUES (null, #{todo_seq}, #{mem_id}, now(), #{cmpl_img}, #{cmpl_memo}, #{cmpl_strange}, #{cate_seq})")
 	public int todoCmpl(ToDoComplete cmpl_info);
+	
+	@Select("SELECT * FROM tbl_attendance WHERE mem_id = #{mem_id} AND group_seq = #{group_seq}")
+	public List<Attendance> getAttendance(Attendance att_info);
+	
+	
 
 }

@@ -121,6 +121,11 @@ public class AndroidController {
 		return androidService.todoCmpl(cmpl_info);
 	}
 	
+	@PostMapping("/android/getAttendance")
+	public List<Attendance> getAttendance(@RequestBody att_info){
+		return androidService.getAttendance(att_info);
+	}
+	
 	
 
 }
