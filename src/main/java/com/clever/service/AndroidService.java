@@ -9,6 +9,7 @@ import com.clever.controller.EmailController;
 import com.clever.mapper.AndroidMapper;
 import com.clever.model.Attendance;
 import com.clever.model.Category;
+import com.clever.model.ChangeAttendance;
 import com.clever.model.Group;
 import com.clever.model.Member;
 import com.clever.model.Notice;
@@ -121,5 +122,12 @@ public class AndroidService {
 		return androidMapper.getAttendance(att_info);
 	}
 	
+	public Attendance getAtt(int att_seq) {
+		return androidMapper.getAtt(att_seq);
+	}
+	
+	public int attCh(ChangeAttendance att_info) {
+		return androidMapper.attCh(att_info);
+	}
 	
 }

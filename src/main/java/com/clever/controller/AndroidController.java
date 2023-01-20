@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.clever.model.Attendance;
 import com.clever.model.Category;
+import com.clever.model.ChangeAttendance;
 import com.clever.model.Group;
 import com.clever.model.Member;
 import com.clever.model.Notice;
@@ -128,6 +129,16 @@ public class AndroidController {
 		
 		System.out.println("반환 : " + androidService.getAttendance(att_info));
 		return androidService.getAttendance(att_info);
+	}
+	
+	@PostMapping("/android/getAtt")
+	public Attendance getAtt(@RequestBody Attendance att_info) {
+		return androidService.getAtt(att_info.getAtt_seq());
+	}
+	
+	@PostMapping("/android/attCh")
+	public int attCh(@RequestBody ChangeAttendance att_info) {
+		return androidService.attCh(att_info);
 	}
 	
 	

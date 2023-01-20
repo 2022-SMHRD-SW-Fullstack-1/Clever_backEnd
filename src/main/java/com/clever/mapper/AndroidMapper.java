@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Update;
 
 import com.clever.model.Attendance;
 import com.clever.model.Category;
+import com.clever.model.ChangeAttendance;
 import com.clever.model.Group;
 import com.clever.model.Member;
 import com.clever.model.Notice;
@@ -81,6 +82,12 @@ public interface AndroidMapper {
 	
 	@Select("SELECT * FROM tbl_attendance WHERE mem_id = #{mem_id} AND group_seq = #{group_seq}")
 	public List<Attendance> getAttendance(Attendance att_info);
+	
+	@Select("SELECT * FROM tbl_attendance WHERE att_seq = #{att_seq}")
+	public Attendance getAtt(int att_seq);
+	
+	@Insert("INSERT INTO tbl_change_attendance VALUES (null, att_seq = #{att_seq}, null, null, mem_id = #{mem_id}, ch_start_time = #{ch_start_time}, ch_end_time = #{ch_end_time}, ch_date = #{ch_date}, group_seq = #{group_seq})")
+	public int attCh(ChangeAttendance att_info);
 	
 	
 
