@@ -1,5 +1,7 @@
 package com.clever.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,8 +29,11 @@ public class BoardController {
 		return boardService.countBoardCategory(cate_info);
 	}
 	
-	public void getBoardCategory(@RequestBody Category cate_info) {
+	@PostMapping("/getcategory")
+	public List<Category> getBoardCategory(@RequestBody Category cate_info) {
 		System.out.println(cate_info);
+		List<Category> cateList = boardService.getBoardCategory(cate_info.getGroup_seq());
+		return cateList;
 	}
 
 }

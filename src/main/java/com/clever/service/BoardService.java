@@ -1,5 +1,7 @@
 package com.clever.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,10 @@ public class BoardService {
 	
 	public int countBoardCategory(Category cate_info) {
 		return boardMapper.countBoardCategory(cate_info);
+	}
+	
+	public List<Category> getBoardCategory(int group_seq){
+		return boardMapper.getBoardCategory(group_seq);
 	}
 
 }
