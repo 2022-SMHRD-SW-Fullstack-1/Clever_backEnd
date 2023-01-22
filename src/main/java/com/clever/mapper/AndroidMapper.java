@@ -73,8 +73,11 @@ public interface AndroidMapper {
 	
 	@Update("UPDATE tbl_member SET mem_pw = #{mem_pw} WHERE mem_id = #{mem_id}")
 	public int changePw(Member mem_info);
-	
-	@Delete("DELETE tbl_group ")
+
+	@Delete("DELETE tbl_group WHERE group_seq = #{group_seq} AND mem_id = #{mem_id}")
+	public int groupDelete(Group group_info);
+
+	@Delete("DELETE tbl_join WHERE group_seq = #{group_seq} AND mem_id = #{mem_id}")
 	public int groupOut(Group group_info);
 	
 	@Insert("INSERT INTO tbl_complete VALUES (null, #{todo_seq}, #{mem_id}, now(), #{cmpl_img}, #{cmpl_memo}, #{cmpl_strange}, #{cate_seq})")
@@ -86,9 +89,17 @@ public interface AndroidMapper {
 	@Select("SELECT * FROM tbl_attendance WHERE att_seq = #{att_seq}")
 	public Attendance getAtt(int att_seq);
 	
-	@Insert("INSERT INTO tbl_change_attendance VALUES (null, att_seq = #{att_seq}, null, null, mem_id = #{mem_id}, ch_start_time = #{ch_start_time}, ch_end_time = #{ch_end_time}, ch_date = #{ch_date}, group_seq = #{group_seq})")
+	@Insert("INSERT INTO tbl_change_attendance VALUES (null, #{att_seq}, null, null, #{mem_id}, #{ch_start_time}, #{ch_end_time}, #{ch_date}, #{group_seq})")
 	public int attCh(ChangeAttendance att_info);
-	
+
+	@Update("UPDATE tbl_member SET mem_name = #{mem_name} WHERE mem_id = #{mem_id}")
+	public int chName(Member mem_info);
+
+	@Delete("DELETE tbl_category WHERE cate_seq = #{cate_seq}")
+	public int categoryDelete(Category category_info);
+
+	@Delete("DELETE tbl_notice WHERE notice_seq = #{notice_seq} AND cate_seq = #{cate_seq}")
+	public int noticeDelete(Notice notice_info);
 	
 
 }

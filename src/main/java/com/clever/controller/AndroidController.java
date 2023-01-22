@@ -125,9 +125,6 @@ public class AndroidController {
 	
 	@PostMapping("/android/getAttendance")
 	public List<Attendance> getAttendance(@RequestBody Attendance att_info){
-		System.out.println("받은 값 : " + att_info);
-		
-		System.out.println("반환 : " + androidService.getAttendance(att_info));
 		return androidService.getAttendance(att_info);
 	}
 	
@@ -140,7 +137,22 @@ public class AndroidController {
 	public int attCh(@RequestBody ChangeAttendance att_info) {
 		return androidService.attCh(att_info);
 	}
-	
-	
+
+	@PostMapping("/android/chName")
+	public int chName(@RequestBody Member mem_info){
+		return androidService.chName(mem_info);
+	}
+
+	@PostMapping("/android/categoryDelete")
+	public int categoryDelete(@RequestBody Category category_info){
+		return androidService.categoryDelete(category_info);
+	}
+
+	@PostMapping("/android/noticeDelete")
+	public int noticeDelete(@RequestBody Notice notice_info){
+		return androidService.noticeDelete(notice_info);
+	}
+
+
 
 }
