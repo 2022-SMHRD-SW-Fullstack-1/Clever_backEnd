@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.clever.mapper.BoardMapper;
 import com.clever.model.Category;
+import com.clever.model.Notice;
 
 @Service
 public class BoardService {
@@ -23,6 +24,14 @@ public class BoardService {
 	
 	public List<Category> getBoardCategory(int group_seq){
 		return boardMapper.getBoardCategory(group_seq);
+	}
+	
+	public int postBoard(Notice notice_info) {
+		return boardMapper.postBoard(notice_info);
+	}
+	
+	public List<Notice> getBoardList(int cate_seq){
+		return boardMapper.getBoardList(cate_seq);
 	}
 
 }
