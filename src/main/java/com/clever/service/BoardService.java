@@ -29,5 +29,9 @@ public class BoardService {
 	public int postBoard(Notice notice_info) {
 		return boardMapper.postBoard(notice_info);
 	}
+	
+	public List<Notice> getBoardList(int cate_seq){
+		return boardMapper.getBoardList(cate_seq);
+	}
 
 }
