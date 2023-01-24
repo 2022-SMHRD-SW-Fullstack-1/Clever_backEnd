@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.clever.mapper.BoardMapper;
 import com.clever.model.Category;
@@ -32,6 +33,10 @@ public class BoardService {
 	
 	public List<Notice> getBoardList(int cate_seq){
 		return boardMapper.getBoardList(cate_seq);
+	}
+	
+	public void uploadFile(MultipartFile[] upload_file) {
+		
 	}
 
 }
