@@ -7,7 +7,9 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import com.clever.model.Category;
+import com.clever.model.Group;
 import com.clever.model.ToDo;
+import com.clever.model.ToDoComplete;
 
 
 @Mapper
@@ -21,7 +23,15 @@ public interface ToDoMapper {
 	@Select("select * from tbl_category where cate_type='ToDo'")
 	public List<Category> getCategory();
 	
+	// 담당자 불러오기
+	@Select ("select mem_name from tbl_member tm inner join tbl_join tj on tm.mem_id = tj.mem_id where #{group_seq}='3' ")
+	public List<Group> getMember();
+	
 	// 할 일 불러오기
 	@Select("select * from tbl_todo")
 	public List<ToDo> toDoList(ToDo toDoList);
+	
+	//완료된 할 일
+	@Select("select * from tbl_complete where todo_seq=#{todo_seq}")
+	public List<ToDoComplete> toDoDetail(ToDo toDoDetail);
 }
