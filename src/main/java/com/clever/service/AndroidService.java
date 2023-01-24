@@ -136,7 +136,6 @@ public class AndroidService {
     }
 
 
-
     // Notice 전달사항
     public List<Notice> getNotice(Notice notice) {
         return androidMapper.getNotice(notice);
@@ -158,18 +157,17 @@ public class AndroidService {
         return androidMapper.noticeWrite(notice_info);
     }
 
-    public int writeComment(NoticeComment com_info){
+    public int writeComment(NoticeComment com_info) {
         return androidMapper.writeComment(com_info);
     }
 
-    public List<NoticeComment> getComment(NoticeComment com_info){
+    public List<NoticeComment> getComment(NoticeComment com_info) {
         return androidMapper.getComment(com_info);
     }
 
-    public int deleteComment(int com_seq){
+    public int deleteComment(int com_seq) {
         return androidMapper.deleteComment(com_seq);
     }
-
 
 
     // Attendance 근무일정
@@ -185,5 +183,21 @@ public class AndroidService {
         return androidMapper.attCh(att_info);
     }
 
+    public ChangeAttendance checkAttCh(int att_seq) {
+        return androidMapper.checkAttCh(att_seq);
+    }
 
+    public double getAttTime(String mem_id, int group_seq, String start_date, String end_date){
+        List<Attendance> attList = androidMapper.getAttTime(mem_id, group_seq, start_date, end_date);
+        double result = 0;
+        for(int i = 0; i<attList.size(); i++){
+            int startH = Integer.parseInt(attList.get(i).getAtt_real_start_time().substring(0,2));
+            int endH = Integer.parseInt(attList.get(i).getAtt_real_end_time().substring(0,2));
+            result += startH < endH ? endH-startH : (endH+24)-startH;
+            double startM = Integer.parseInt(attList.get(i).getAtt_real_start_time().substring(3,5));
+            double endM = Integer.parseInt(attList.get(i).getAtt_real_end_time().substring(3,5));
+            result += startM < endM ? (endM-startM)/60 : ((endM+60)-startM)/60-1;
+        }
+        return result;
+    }
 }
