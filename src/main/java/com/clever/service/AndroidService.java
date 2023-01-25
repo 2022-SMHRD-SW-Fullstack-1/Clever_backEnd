@@ -134,7 +134,19 @@ public class AndroidService {
     public int todoCmpl(ToDoComplete cmpl_info) {
         return androidMapper.todoCmpl(cmpl_info);
     }
+    
+    public List<ToDoComplete> getMemo(String cmpl_time, int group_seq){
+    	return androidMapper.getMemo(cmpl_time, group_seq);
+    }
+    
+    public int deleteTodoMemo(int cmpl_seq, String cmpl_memo) {
+    	return androidMapper.deleteTodoMemo(cmpl_seq, cmpl_memo);
+    }
 
+    public ToDoComplete getCmpl(int cmpl_seq) {
+    	return androidMapper.getCmpl(cmpl_seq);
+    }
+    
 
     // Notice 전달사항
     public List<Notice> getNotice(Notice notice) {

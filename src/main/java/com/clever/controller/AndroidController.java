@@ -107,13 +107,28 @@ public class AndroidController {
     }
 
     @PostMapping("/android/getToDoCmplList")
-    public List<ToDoComplete> getToDoCmplList(@RequestBody ToDoComplete cmpl_info) {
-        return androidService.getToDoCmplList(cmpl_info.getTodo_seq());
+    public List<ToDoComplete> getToDoCmplList(@RequestParam int todo_seq) {
+        return androidService.getToDoCmplList(todo_seq);
     }
 
     @PostMapping("/android/todoCmpl")
     public int todoCmpl(@RequestBody ToDoComplete cmpl_info) {
         return androidService.todoCmpl(cmpl_info);
+    }
+    
+    @PostMapping("/android/getMemo")
+    public List<ToDoComplete> getMemo(@RequestParam String cmpl_time, int group_seq){
+    	return androidService.getMemo(cmpl_time, group_seq);
+    }
+    
+    @PostMapping("/android/deleteTodoMemo")
+    public int deleteTodoMemo(@RequestParam int cmpl_seq, String cmpl_memo) {
+    	return androidService.deleteTodoMemo(cmpl_seq, cmpl_memo);
+    }
+    
+    @PostMapping("/android/getCmpl")
+    public ToDoComplete getCmpl(@RequestParam int cmpl_seq) {
+    	return androidService.getCmpl(cmpl_seq);
     }
 
 

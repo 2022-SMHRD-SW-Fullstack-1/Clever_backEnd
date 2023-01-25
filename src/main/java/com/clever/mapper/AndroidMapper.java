@@ -79,6 +79,15 @@ public interface AndroidMapper {
 
     @Insert("INSERT INTO tbl_complete VALUES (null, #{todo_seq}, #{mem_id}, now(), #{cmpl_img}, #{cmpl_memo}, #{cmpl_strange}, #{cate_seq})")
     public int todoCmpl(ToDoComplete cmpl_info);
+    
+    @Select("SELECT * FROM tbl_complete tc LEFT JOIN tbl_category tc2 ON tc.cate_seq = tc2.cate_seq WHERE group_seq = #{group_seq} AND cmpl_time LIKE '${cmpl_time}%'")
+    public List<ToDoComplete> getMemo(String cmpl_time, int group_seq);
+    
+    @Update("UPDATE tbl_complete SET cmpl_memo = #{cmpl_memo} WHERE cmpl_seq = #{cmpl_seq}")
+    public int deleteTodoMemo(int cmpl_seq, String cmpl_memo);
+    
+    @Select("SELECT * FROM tbl_complete tc LEFT JOIN tbl_todo tt ON tc.todo_seq = tt.todo_seq WHERE cmpl_seq = #{cmpl_seq}")
+    public ToDoComplete getCmpl(int cmpl_seq);
 
 
     // Notice 전달사항
