@@ -1,5 +1,6 @@
 package com.clever.service;
 
+import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,16 +28,43 @@ public class BoardService {
 		return boardMapper.getBoardCategory(group_seq);
 	}
 	
-	public int postBoard(Notice notice_info) {
+	public int postBoard(Notice notice_info, MultipartFile[] upload_file) {
+		if(upload_file != null) {
+			String uploadFolder = "C:\\Users\\smhrd\\Desktop\\Clever_frontEnd\\public\\image";
+			
+			for(MultipartFile multipartFile : upload_file) {
+				System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
+				System.out.println("Upload File Size : " + multipartFile.getSize());
+						
+				String uploadFileName = multipartFile.getOriginalFilename();
+				
+				uploadFileName = notice_info.getNotice_seq() + uploadFileName;
+	
+				System.out.print("only file name : " + uploadFileName);
+				
+				notice_info.setNotice_photo(uploadFileName);
+				
+				File saveFile = new File(uploadFolder, uploadFileName);
+			
+				try {
+					multipartFile.transferTo(saveFile);
+				}catch (Exception e) {
+					System.out.print(e.getMessage());
+				}
+			}
+		
+		}else if(upload_file == null) {
+			
+			notice_info.setNotice_photo(null);
+				
+		}
 		return boardMapper.postBoard(notice_info);
 	}
+	
 	
 	public List<Notice> getBoardList(int cate_seq){
 		return boardMapper.getBoardList(cate_seq);
 	}
 	
-	public void uploadFile(MultipartFile[] upload_file) {
-		
-	}
 
 }
