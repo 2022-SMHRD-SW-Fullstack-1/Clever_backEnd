@@ -130,6 +130,11 @@ public class AndroidController {
     public ToDoComplete getCmpl(@RequestParam int cmpl_seq) {
     	return androidService.getCmpl(cmpl_seq);
     }
+    
+    @PostMapping("/android/todoModify")
+    public int todoModify(@RequestBody ToDoComplete cmpl_info) {
+    	return androidService.todoModify(cmpl_info);
+    }
 
 
     // Notice 전달사항

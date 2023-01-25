@@ -147,6 +147,11 @@ public class AndroidService {
     	return androidMapper.getCmpl(cmpl_seq);
     }
     
+    public int todoModify(ToDoComplete cmpl_info) {
+    	return androidMapper.todoModify(cmpl_info);
+    }
+    
+    
 
     // Notice 전달사항
     public List<Notice> getNotice(Notice notice) {

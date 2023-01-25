@@ -54,7 +54,7 @@ public interface AndroidMapper {
     @Select("SELECT * FROM tbl_group WHERE group_serial = #{group_serial}")
     public Group groupSerialCheck(String group_serial);
 
-    @Insert("INSERT INTO tbl_join VALUES (null, #{group_seq}, #{mem_id}, now())")
+    @Insert("INSERT INTO tbl_join VALUES (null, #{group_seq}, #{mem_id}, now(), null)")
     public int joinGroup(int group_seq, String mem_id);
 
 
@@ -88,6 +88,9 @@ public interface AndroidMapper {
     
     @Select("SELECT * FROM tbl_complete tc LEFT JOIN tbl_todo tt ON tc.todo_seq = tt.todo_seq WHERE cmpl_seq = #{cmpl_seq}")
     public ToDoComplete getCmpl(int cmpl_seq);
+    
+    @Update("UPDATE tbl_complete SET cmpl_memo = #{cmpl_memo}, cmpl_img = #{cmpl_img}, cmpl_strange = #{cmpl_strange} WHERE cmpl_seq = #{cmpl_seq}")
+    public int todoModify(ToDoComplete cmpl_info);
 
 
     // Notice 전달사항
