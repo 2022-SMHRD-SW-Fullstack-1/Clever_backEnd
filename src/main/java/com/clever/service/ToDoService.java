@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.clever.mapper.ToDoMapper;
 import com.clever.model.Category;
 import com.clever.model.Group;
+import com.clever.model.Notice;
 import com.clever.model.ToDo;
 import com.clever.model.ToDoComplete;
 
@@ -40,8 +41,8 @@ public class ToDoService {
 	}
 	
 	// 할 일 수정
-	public HashMap<String, Object> EditTodo(ToDo todo_seq){
-		ToDo todo = toDoMapper.EditTodo(todo_seq);
+	public HashMap<String, Object> editTodo(ToDo todo_seq){
+		ToDo todo = toDoMapper.editTodo(todo_seq);
 		
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		result.put("todo_seq", todo.getTodo_seq());
@@ -57,8 +58,16 @@ public class ToDoService {
 	}
 	
 	// 완료된 할 일
+//	public ToDoComplete ToDoDetail (int todo_seq) {
+//		return toDoMapper.ToDoDetail(todo_seq);
+//	}
 	public List<ToDoComplete> toDoDetail(ToDo toDoDetail){
 		return toDoMapper.toDoDetail(toDoDetail);
 		}
+	
+	// 오늘의 특이사항
+	public List<Notice> todayNotice (Notice todayNotice){
+		return toDoMapper.todayNotice(todayNotice);
+	}
 
 }

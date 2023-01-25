@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.clever.model.ToDoComplete;
 import com.clever.model.Category;
 import com.clever.model.Group;
+import com.clever.model.Notice;
 import com.clever.model.ToDo;
 import com.clever.service.ToDoService;
 import com.google.gson.Gson;
@@ -55,10 +58,10 @@ public class ToDoController {
 	
 	// 클릭한 할 일 수정
 	@PostMapping("/edittodo")
-	public String EditTodo(@RequestBody ToDo todo_seq) {
+	public String editTodo(@RequestBody ToDo todo_seq) {
 		System.out.println("넘어오는 값" + todo_seq);
 		
-		Map<String, Object> result = (toDoService.EditTodo(todo_seq));
+		Map<String, Object> result = (toDoService.editTodo(todo_seq));
 		System.out.println(result);
 //		System.out.println("detailPro Service");
 //		result.put("commentView", qnaService.commentView(pro_Num));
@@ -70,8 +73,15 @@ public class ToDoController {
 	
 	// 완료된 할 일
     @PostMapping("/tododetail")
-		public List<ToDoComplete> toDoDetail (ToDo toDoDetail){
-			return toDoService.toDoDetail(toDoDetail);
+		public void toDoDetail (ToDo toDoDetail){
+    	System.out.println("넘어온 값 : "+ toDoDetail);
+//			return toDoService.toDoDetail(toDoDetail);
 		}
+    
+    // 오늘의 특이사항
+    @PostMapping("/todaynotice")
+    public List<Notice> todayNotice (Notice todayNotice){
+    	return toDoService.todayNotice(todayNotice);
+    }
 
 }
