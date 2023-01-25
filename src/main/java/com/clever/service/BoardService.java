@@ -2,6 +2,7 @@ package com.clever.service;
 
 import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,7 +39,8 @@ public class BoardService {
 						
 				String uploadFileName = multipartFile.getOriginalFilename();
 				
-				uploadFileName = notice_info.getNotice_seq() + uploadFileName;
+				UUID uuid = UUID.randomUUID();
+				uploadFileName = uuid + uploadFileName;
 	
 				System.out.print("only file name : " + uploadFileName);
 				
