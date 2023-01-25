@@ -24,7 +24,7 @@ public interface BoardMapper {
 	@Insert("insert into tbl_notice values(null, #{cate_seq}, #{notice_title}, #{notice_content}, now(), #{notice_photo}, #{mem_id})")
 	public int postBoard(Notice notice_info);
 	
-	@Select("select notice_seq, notice_title, notice_content, notice_dt, notice_photo, mem_id from tbl_notice WHERE cate_seq = #{cate_seq}")
+	@Select("select notice_seq, notice_title, notice_content, notice_dt, notice_photo, tm.mem_name from tbl_notice tn inner join tbl_member tm on tn.mem_id = tm.mem_id WHERE cate_seq = #{cate_seq} order by notice_seq desc")
 	public List<Notice> getBoardList(int cate_seq);
 
 }

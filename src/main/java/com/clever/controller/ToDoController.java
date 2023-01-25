@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.clever.model.Category;
+import com.clever.model.Group;
 import com.clever.model.ToDo;
+import com.clever.model.ToDoComplete;
 import com.clever.service.ToDoService;
 
 import lombok.RequiredArgsConstructor;
@@ -36,15 +38,21 @@ public class ToDoController {
 	}
 	
 	// 담당자 불러오기
-//	@PostMapping("/getmember")
-//	public List<Join> getMember(){
-//		return toDoService.getMember();
-//	}
-//	
+	@PostMapping("/getmember")
+	public List<Group> getMember(){
+		return toDoService.getMember();
+	}
+
 	// 할 일 불러오기
 	@PostMapping("/todolist")
 	public List<ToDo> toDoList(ToDo toDoList){
 		return toDoService.toDoList(toDoList);
+	}
+	
+	// 완료된 할 일
+	@PostMapping("/tododetail")
+	public List<ToDoComplete> toDoDetail (ToDo toDoDetail){
+		return toDoService.toDoDetail(toDoDetail);
 	}
 
 }
