@@ -17,6 +17,7 @@ public class ChangeAttendance {
 	String ch_start_time;
 	String ch_end_time;
 	String ch_date;
+	String mem_name;
 	int group_seq;
 	
 }
