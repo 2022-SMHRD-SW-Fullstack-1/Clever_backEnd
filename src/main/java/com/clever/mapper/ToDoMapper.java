@@ -26,9 +26,8 @@ public interface ToDoMapper {
 	public List<Category> getCategory();
 	
 	// 담당자 불러오기
-
 	@Select ("select tm.mem_id, tm.mem_name from tbl_member tm inner join tbl_join tj on tm.mem_id = tj.mem_id where tj.group_seq='4' ")
-public List<Group> getMember();
+	public List<Group> getMember();
 	
 	// 할 일 불러오기
 	@Select("select * from tbl_todo")
