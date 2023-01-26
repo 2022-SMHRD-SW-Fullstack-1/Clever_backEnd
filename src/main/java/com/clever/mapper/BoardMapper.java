@@ -2,6 +2,7 @@ package com.clever.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -26,5 +27,8 @@ public interface BoardMapper {
 	
 	@Select("select notice_seq, notice_title, notice_content, notice_dt, notice_photo, tm.mem_name from tbl_notice tn inner join tbl_member tm on tn.mem_id = tm.mem_id WHERE cate_seq = #{cate_seq} order by notice_seq desc")
 	public List<Notice> getBoardList(int cate_seq);
+	
+	@Delete("delete from tbl_notice where notice_seq = #{notice_seq}")
+	public int deleteBoard(Notice notice_info);
 
 }
