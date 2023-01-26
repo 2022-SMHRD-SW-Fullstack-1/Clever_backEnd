@@ -35,6 +35,7 @@ public class ToDoController {
 	// 할 일 등록
 	@PostMapping("/addtodo")
 	public int toDoCreate(@RequestBody ToDo toDoCreate) {
+		System.out.println("addtodo : " +toDoCreate);
 		return toDoService.toDoCreate(toDoCreate);
 	}
 	

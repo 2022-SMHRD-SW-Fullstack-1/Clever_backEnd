@@ -17,15 +17,15 @@ import com.clever.model.ToDoComplete;
 public interface ToDoMapper {
 	
 	// 할일 등록
-	@Insert("insert into tbl_todo values(null, #{cate_seq}, #{todo_title}, #{todo_content},  localtimestamp, #{todo_repeat}, '', #{todo_method})")
+	@Insert("insert into tbl_todo values(null, #{cate_seq}, #{todo_title}, #{todo_content}, localtimestamp, #{todo_repeat}, #{mem_id}, #{todo_method})")
 	public int toDoCreate(ToDo toDoCreate);
 	
 	// 카테고리 불러오기
-	@Select("select * from tbl_category where cate_type='ToDo' and group_seq='3'")
+	@Select("select * from tbl_category where cate_type='ToDo' and group_seq='4'")
 	public List<Category> getCategory();
 	
 	// 담당자 불러오기
-	@Select ("select tm.mem_name from tbl_member tm inner join tbl_join tj on tm.mem_id = tj.mem_id where tj.group_seq='3' ")
+	@Select ("select tm.mem_id, tm.mem_name from tbl_member tm inner join tbl_join tj on tm.mem_id = tj.mem_id where tj.group_seq='4' ")
 	public List<Group> getMember();
 	
 	// 할 일 불러오기
