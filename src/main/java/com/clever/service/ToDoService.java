@@ -9,10 +9,9 @@ import org.springframework.stereotype.Service;
 import com.clever.mapper.ToDoMapper;
 import com.clever.model.Category;
 import com.clever.model.Group;
-<<<<<<< HEAD
+
 import com.clever.model.Notice;
-=======
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-SW-Fullstack-1/Clever_backEnd.git
+
 import com.clever.model.ToDo;
 import com.clever.model.ToDoComplete;
 
