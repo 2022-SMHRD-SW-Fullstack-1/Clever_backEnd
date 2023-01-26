@@ -49,6 +49,10 @@ public class AndroidService {
             return "1";
         }
     }
+    
+    public int withdrawal(Member mem_info) {
+    	return androidMapper.withdrawal(mem_info);
+    }
 
 
     // group

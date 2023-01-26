@@ -46,6 +46,11 @@ public class AndroidController {
     public String getCode(@RequestBody Member mem_info) throws Exception {
         return androidService.getCode(mem_info);
     }
+    
+    @PostMapping("/android/withdrawal")
+    public int withdrawal(@RequestBody Member mem_info) {
+    	return androidService.withdrawal(mem_info);
+    }
 
 
     // group

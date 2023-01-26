@@ -27,6 +27,9 @@ public interface AndroidMapper {
 
     @Select("SELECT * FROM tbl_member WHERE mem_id = #{mem_id} AND mem_email = #{mem_email}")
     public Member getCode(Member mem_info);
+    
+    @Delete("DELETE FROM tbl_member WHERE mem_id = #{mem_id} AND mem_pw = #{mem_pw}")
+    public int withdrawal(Member mem_info);
 
 
     // group
