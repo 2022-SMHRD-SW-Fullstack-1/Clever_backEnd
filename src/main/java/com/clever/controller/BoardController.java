@@ -49,5 +49,10 @@ public class BoardController {
 	public List<Notice> getBoardList(@RequestBody Notice notice_info){
 		List<Notice> boardList = boardService.getBoardList(notice_info.getCate_seq());
 		return boardList;
-	}	
+	}
+	@PostMapping("/delete")
+	public int deleteBoard(@RequestBody Notice notice_info) {
+		
+		return boardService.deleteBoard(notice_info);
+	}
 }

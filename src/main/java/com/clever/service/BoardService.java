@@ -68,5 +68,9 @@ public class BoardService {
 		return boardMapper.getBoardList(cate_seq);
 	}
 	
+	public int deleteBoard(Notice notice_info) {
+		return boardMapper.deleteBoard(notice_info);
+	}
+	
 
 }

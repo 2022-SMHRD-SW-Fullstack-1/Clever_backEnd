@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.clever.mapper.ToDoMapper;
 import com.clever.model.Category;
 import com.clever.model.Group;
-
 import com.clever.model.Notice;
 
 import com.clever.model.ToDo;
