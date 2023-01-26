@@ -55,4 +55,10 @@ public class BoardController {
 		
 		return boardService.deleteBoard(notice_info);
 	}
+	@PostMapping("/update")
+	public int updateBoard(@RequestPart(value="inputValue", required=false) Notice notice_info,
+						   @RequestParam(value="inputFile", required=false) MultipartFile[] upload_file) throws Exception{
+
+		return boardService.updateBoard(notice_info, upload_file);
+	}
 }

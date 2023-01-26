@@ -30,6 +30,26 @@ public class BoardService {
 	}
 	
 	public int postBoard(Notice notice_info, MultipartFile[] upload_file) {
+		fileUpload(notice_info, upload_file);
+		return boardMapper.postBoard(notice_info);
+	}
+	
+	
+	public List<Notice> getBoardList(int cate_seq){
+		return boardMapper.getBoardList(cate_seq);
+	}
+	
+	public int deleteBoard(Notice notice_info) {
+		return boardMapper.deleteBoard(notice_info);
+	}
+	
+	public int updateBoard(Notice notice_info,  MultipartFile[] upload_file) {
+		fileUpload(notice_info, upload_file);
+		return boardMapper.updateBoard(notice_info);
+	}
+	
+
+	public void fileUpload(Notice notice_info, MultipartFile[] upload_file) {
 		if(upload_file != null) {
 			String uploadFolder = "C:\\Users\\smhrd\\Desktop\\Clever_frontEnd\\public\\image";
 			
@@ -60,17 +80,5 @@ public class BoardService {
 			notice_info.setNotice_photo(null);
 				
 		}
-		return boardMapper.postBoard(notice_info);
 	}
-	
-	
-	public List<Notice> getBoardList(int cate_seq){
-		return boardMapper.getBoardList(cate_seq);
-	}
-	
-	public int deleteBoard(Notice notice_info) {
-		return boardMapper.deleteBoard(notice_info);
-	}
-	
-
 }

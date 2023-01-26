@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.clever.model.Category;
 import com.clever.model.Notice;
@@ -25,10 +26,12 @@ public interface BoardMapper {
 	@Insert("insert into tbl_notice values(null, #{cate_seq}, #{notice_title}, #{notice_content}, now(), #{notice_photo}, #{mem_id})")
 	public int postBoard(Notice notice_info);
 	
-	@Select("select notice_seq, notice_title, notice_content, notice_dt, notice_photo, tm.mem_name from tbl_notice tn inner join tbl_member tm on tn.mem_id = tm.mem_id WHERE cate_seq = #{cate_seq} order by notice_seq desc")
+	@Select("select notice_seq, cate_seq, notice_title, notice_content, notice_dt, notice_photo, tm.mem_id, tm.mem_name from tbl_notice tn inner join tbl_member tm on tn.mem_id = tm.mem_id WHERE cate_seq = #{cate_seq} order by notice_seq desc")
 	public List<Notice> getBoardList(int cate_seq);
 	
 	@Delete("delete from tbl_notice where notice_seq = #{notice_seq}")
 	public int deleteBoard(Notice notice_info);
-
+	
+	@Update("update tbl_notice set notice_title = #{notice_title}, notice_content =#{notice_content}, notice_dt = now(), notice_photo = #{notice_photo} where notice_seq = #{notice_seq}")
+	public int updateBoard(Notice notice_info);
 }
