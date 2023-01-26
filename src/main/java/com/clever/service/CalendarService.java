@@ -38,25 +38,34 @@ public class CalendarService {
 	}
 	
 	public void updateSchedul(ArrayList<Attendance> updateInfo) {
-		int totalResult = 0;
-		int sent =updateInfo.size();
-		int result = 0;
+//		int totalResult = 0;
+//		int sent =updateInfo.size();
+//		int result = 0;
+//		System.out.println("받은업데이트 정보 :"+ updateInfo.get(0));		
 		
-	
-		if(updateInfo.size()==1) {
-			System.out.println("받은업데이트 정보 :"+ updateInfo.get(0));
-			calendarMapper.updateSchedul(updateInfo.get(0));
-		}else {
-			for(int i=0; i<updateInfo.size(); i++) {
-				
-				System.out.println(i+1+"번째 data :"+updateInfo.get(0));
-				result =  calendarMapper.updateSchedul(updateInfo.get(i));		
-				System.out.println(i+1+"번째 결과"+result);
-				totalResult += result ;
-			}
+		System.out.println("받은 정보 : "+updateInfo);
+		
+		calendarMapper.deleteSchedul(updateInfo.get(0));
+		if(updateInfo.size() != 0) {
+			for(int i=0; i<updateInfo.size(); i++) {							
+				System.out.println("수정할 정보 : " + updateInfo.get(i));
+				calendarMapper.updateSchedul(updateInfo.get(i));		
+//				System.out.println(i+1+"번째 결과"+result);
+//				totalResult += result ;
+			}	
 		}
+//		if(updateInfo.size()==0) {
+//			System.out.println("삭제완료");	
+//		}else {
+//			for(int i=0; i<updateInfo.size(); i++) {							
+//				System.out.println("수정할 정보 : " + updateInfo.get(i));
+////				result =  calendarMapper.updateSchedul(updateInfo.get(i));		
+////				System.out.println(i+1+"번째 결과"+result);
+////				totalResult += result ;
+//			}
+//		}
 	
-		System.out.println("요청수 :"+sent +"성공한 수:"+totalResult);
+//		System.out.println("요청수 :"+sent +"성공한 수:"+totalResult);
 	
 		
 	
@@ -65,9 +74,10 @@ public class CalendarService {
 				
 				
 	}
-	public int deleteSchedul(String date) {
+	public int deleteSchedul(ArrayList<Attendance> date) {
 		
-		return calendarMapper.deleteSchedul(date);
+		
+		return calendarMapper.deleteSchedul(date.get(0));
 	}
 	
 	public List<ChangeAttendance> getModification(int groupSeq){
