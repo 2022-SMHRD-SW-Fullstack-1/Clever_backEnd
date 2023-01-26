@@ -77,9 +77,9 @@ public class ToDoController {
 	
 	// 완료된 할 일
     @PostMapping("/tododetail")
-		public void toDoDetail (ToDo toDoDetail){
+		public List<ToDoComplete> toDoDetail (@RequestBody ToDo toDoDetail){
     	System.out.println("넘어온 값 : "+ toDoDetail);
-//			return toDoService.toDoDetail(toDoDetail);
+			return toDoService.toDoDetail(toDoDetail);
 		}
     
     // 오늘의 특이사항
