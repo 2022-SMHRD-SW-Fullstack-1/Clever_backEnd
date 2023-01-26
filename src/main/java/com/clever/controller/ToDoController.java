@@ -50,9 +50,10 @@ public class ToDoController {
 	}
 	
 	// 완료된 할 일
-	@PostMapping("/tododetail")
-	public List<ToDoComplete> toDoDetail (ToDo toDoDetail){
-		return toDoService.toDoDetail(toDoDetail);
-	}
+    @PostMapping("/tododetail")
+		public void toDoDetail (ToDo toDoDetail){
+    	System.out.println("넘어온 값 : "+ toDoDetail);
+//			return toDoService.toDoDetail(toDoDetail);
+		}
 
 }

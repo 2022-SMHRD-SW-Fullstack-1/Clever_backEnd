@@ -34,4 +34,5 @@ public interface ToDoMapper {
 	//완료된 할 일
 	@Select("select * from tbl_complete where todo_seq=#{todo_seq}")
 	public List<ToDoComplete> toDoDetail(ToDo toDoDetail);
-}
+	
+	}
