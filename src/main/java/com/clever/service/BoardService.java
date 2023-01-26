@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.clever.mapper.BoardMapper;
 import com.clever.model.Category;
 import com.clever.model.Notice;
+import com.clever.model.NoticeComment;
 
 @Service
 public class BoardService {
@@ -46,6 +47,10 @@ public class BoardService {
 	public int updateBoard(Notice notice_info,  MultipartFile[] upload_file) {
 		fileUpload(notice_info, upload_file);
 		return boardMapper.updateBoard(notice_info);
+	}
+	
+	public int postBoardComment(NoticeComment comment_info) {
+		return boardMapper.postBoardComment(comment_info);
 	}
 	
 

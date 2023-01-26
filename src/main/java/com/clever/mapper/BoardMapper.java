@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Update;
 
 import com.clever.model.Category;
 import com.clever.model.Notice;
+import com.clever.model.NoticeComment;
 
 @Mapper
 public interface BoardMapper {
@@ -34,4 +35,7 @@ public interface BoardMapper {
 	
 	@Update("update tbl_notice set notice_title = #{notice_title}, notice_content =#{notice_content}, notice_dt = now(), notice_photo = #{notice_photo} where notice_seq = #{notice_seq}")
 	public int updateBoard(Notice notice_info);
+	
+	@Insert("insert into tbl_notice_comment values(null, #{notice_seq}, #{mem_id}, #{com_content}, now())")
+	public int postBoardComment(NoticeComment notice_info);
 }

@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.clever.model.Category;
 import com.clever.model.Notice;
+import com.clever.model.NoticeComment;
 import com.clever.service.BoardService;
 
 
@@ -60,5 +61,11 @@ public class BoardController {
 						   @RequestParam(value="inputFile", required=false) MultipartFile[] upload_file) throws Exception{
 
 		return boardService.updateBoard(notice_info, upload_file);
+	}
+	
+	@PostMapping("/comment/post")
+	public int postBoardComment(@RequestBody NoticeComment comment_info) {
+		
+		return boardService.postBoardComment(comment_info);
 	}
 }
