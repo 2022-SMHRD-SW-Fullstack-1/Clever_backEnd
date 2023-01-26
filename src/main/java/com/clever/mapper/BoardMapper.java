@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import com.clever.model.Category;
+import com.clever.model.Notice;
 
 @Mapper
 public interface BoardMapper {
@@ -19,5 +20,11 @@ public interface BoardMapper {
 	
 	@Select("select cate_seq, cate_name, group_seq from tbl_category where cate_type='Notice' and group_seq=#{group_seq}")
 	public List<Category> getBoardCategory(int group_seq);
+	
+	@Insert("insert into tbl_notice values(null, #{cate_seq}, #{notice_title}, #{notice_content}, now(), #{notice_photo}, #{mem_id})")
+	public int postBoard(Notice notice_info);
+	
+	@Select("select notice_seq, notice_title, notice_content, notice_dt, notice_photo, tm.mem_name from tbl_notice tn inner join tbl_member tm on tn.mem_id = tm.mem_id WHERE cate_seq = #{cate_seq} order by notice_seq desc")
+	public List<Notice> getBoardList(int cate_seq);
 
 }

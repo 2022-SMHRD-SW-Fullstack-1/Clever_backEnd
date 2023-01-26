@@ -19,5 +19,6 @@ public class ToDoComplete {
 	int cate_seq;
 	String todo_title;
 	String mem_name;
+	String todo_content;
 	
 }

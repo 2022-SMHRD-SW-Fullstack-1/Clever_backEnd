@@ -16,7 +16,9 @@ import com.clever.model.ToDoComplete;
 import com.clever.model.Category;
 import com.clever.model.Group;
 import com.clever.model.Notice;
+
 import com.clever.model.ToDo;
+import com.clever.model.ToDoComplete;
 import com.clever.service.ToDoService;
 import com.google.gson.Gson;
 
@@ -50,13 +52,14 @@ public class ToDoController {
 	public List<Group> getMember(){
 		return toDoService.getMember();
 	}
-	
+
 	// 할 일 불러오기
 	@PostMapping("/todolist")
 	public List<ToDo> toDoList(ToDo toDoList){
 		return toDoService.toDoList(toDoList);
 	}
 	
+
 	// 클릭한 할 일 수정
 	@PostMapping("/edittodo")
 	public String editTodo(@RequestBody ToDo todo_seq) {

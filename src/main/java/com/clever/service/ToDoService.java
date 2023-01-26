@@ -9,7 +9,10 @@ import org.springframework.stereotype.Service;
 import com.clever.mapper.ToDoMapper;
 import com.clever.model.Category;
 import com.clever.model.Group;
+<<<<<<< HEAD
 import com.clever.model.Notice;
+=======
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-SW-Fullstack-1/Clever_backEnd.git
 import com.clever.model.ToDo;
 import com.clever.model.ToDoComplete;
 
@@ -30,9 +33,13 @@ public class ToDoService {
 		return toDoMapper.getCategory();
 	}
 	
-	// 담당자 가져오기
+
+
+	// 담당자 불러오기
 	public List<Group> getMember(){
 		return toDoMapper.getMember();
+	
+
 	}
 	
 	// 할 일 가져오기
@@ -40,6 +47,7 @@ public class ToDoService {
 		return toDoMapper.toDoList(toDoList);
 	}
 	
+
 	// 할 일 수정
 	public HashMap<String, Object> editTodo(ToDo todo_seq){
 		ToDo todo = toDoMapper.editTodo(todo_seq);
@@ -57,17 +65,17 @@ public class ToDoService {
 		return result;
 	}
 	
-	// 완료된 할 일
-//	public ToDoComplete ToDoDetail (int todo_seq) {
-//		return toDoMapper.ToDoDetail(todo_seq);
-//	}
-	public List<ToDoComplete> toDoDetail(ToDo toDoDetail){
-		return toDoMapper.toDoDetail(toDoDetail);
-		}
+
 	
 	// 오늘의 특이사항
 	public List<Notice> todayNotice (Notice todayNotice){
 		return toDoMapper.todayNotice(todayNotice);
+	}
+	
+	// 완료된 할 일
+	public List<ToDoComplete> toDoDetail(ToDo toDoDetail){
+		return toDoMapper.toDoDetail(toDoDetail);
+
 	}
 
 }

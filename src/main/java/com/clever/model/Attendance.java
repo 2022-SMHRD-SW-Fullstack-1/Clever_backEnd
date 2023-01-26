@@ -15,7 +15,7 @@ public class Attendance {
 	String att_sche_start_time;
 	String att_sche_end_time;
 	String att_real_start_time;
-	String att_real_end_time;
-	int group_seq;
+	String att_real_end_time;	
 	String mem_name;
+	int group_seq;
 }
