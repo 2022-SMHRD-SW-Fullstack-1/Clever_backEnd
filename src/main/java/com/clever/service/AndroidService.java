@@ -100,11 +100,24 @@ public class AndroidService {
 
     // TodoList 할일체크
     public List<Category> getCategory(Category category) {
-        return androidMapper.getCategory(category);
+    	List<Category> res = androidMapper.getCategory(category);
+    	if(category.getCate_type().equals("Notice")) {
+    		for(int i = 0; i<res.size(); i++) {
+    			if(res.get(i).getCate_type().equals("Default")) {
+    				res.remove(i);
+    				break;
+    			}
+    		}    		
+    	}
+        return res;
     }
 
     public List<ToDo> getToDoList(int cate_seq) {
         return androidMapper.getToDoList(cate_seq);
+    }
+    
+    public List<ToDo> getMyToDo(int group_seq, String mem_id){
+    	return androidMapper.getMyToDo(group_seq, mem_id);
     }
 
     public List<ToDoComplete> getToDoComplete(int cate_seq) {
@@ -117,6 +130,18 @@ public class AndroidService {
             getTodo.get(i).setTodo_title(title);
         }
         return getTodo;
+    }
+    
+    public List<ToDoComplete> getMyToDoComplete(int group_seq, String mem_id, String selectDate){
+        List<ToDoComplete> getMyTodo = androidMapper.getMyToDoComplete(group_seq, mem_id, selectDate);
+        	System.out.println("반환값 : " + getMyTodo);
+        for (int i = 0; i < getMyTodo.size(); i++) {
+            int todo_seq = getMyTodo.get(i).getTodo_seq();
+            String title = androidMapper.getTodoTitle(todo_seq);
+            getMyTodo.get(i).setTodo_title(title);
+        }
+        System.out.println("돌려 줄 값 : " + getMyTodo);
+        return getMyTodo;
     }
 
     public ToDo getToDo(ToDo todo_info) {
@@ -212,12 +237,14 @@ public class AndroidService {
         List<Attendance> attList = androidMapper.getAttTime(mem_id, group_seq, start_date, end_date);
         double result = 0;
         for(int i = 0; i<attList.size(); i++){
+        	if(attList.get(i).getAtt_real_start_time() != null || attList.get(i).getAtt_real_end_time() != null) {        		
             int startH = Integer.parseInt(attList.get(i).getAtt_real_start_time().substring(0,2));
             int endH = Integer.parseInt(attList.get(i).getAtt_real_end_time().substring(0,2));
             result += startH < endH ? endH-startH : (endH+24)-startH;
             double startM = Integer.parseInt(attList.get(i).getAtt_real_start_time().substring(3,5));
             double endM = Integer.parseInt(attList.get(i).getAtt_real_end_time().substring(3,5));
             result += startM < endM ? (endM-startM)/60 : ((endM+60)-startM)/60-1;
+        	}
         }
         return result;
     }

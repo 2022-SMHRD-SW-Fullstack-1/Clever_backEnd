@@ -100,10 +100,20 @@ public class AndroidController {
     public List<ToDo> getToDoList(@RequestBody ToDo todo) {
         return androidService.getToDoList(todo.getCate_seq());
     }
+    
+    @PostMapping("/android/getMyToDo")
+    public List<ToDo> getMyToDo(@RequestParam int group_seq, String mem_id){
+    	return androidService.getMyToDo(group_seq, mem_id);
+    }
 
     @PostMapping("/android/getToDoComplete")
     public List<ToDoComplete> getToDoComplete(@RequestBody ToDoComplete cmpl_info) {
         return androidService.getToDoComplete(cmpl_info.getCate_seq());
+    }
+    
+    @PostMapping("/android/getMyToDoComplete")
+    public List<ToDoComplete> getMyToDoComplete(int group_seq, String mem_id, String selectDate){
+    	return androidService.getMyToDoComplete(group_seq, mem_id, selectDate);
     }
 
     @PostMapping("/android/getToDo")
