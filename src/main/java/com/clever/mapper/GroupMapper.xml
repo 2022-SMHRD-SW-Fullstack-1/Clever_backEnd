@@ -8,9 +8,17 @@
 		#{group_name}, 
 		#{group_serial}, 
 		now(), 
-		#{mem_id});
+		#{mem_id}
+				);
 		<selectKey keyProperty="group_seq" keyColumn="group_seq" resultType="Integer" order="AFTER">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
+	
+	<insert id="joinManager" parameterType="com.clever.model.Group">
+		insert into tbl_join values(null, #{group_seq}, #{mem_id}, now(), null);
+		insert into tbl_category values(null, 'Default', '해야할 일', #{group_seq});
+	</insert>
+	
+	
 </mapper>
