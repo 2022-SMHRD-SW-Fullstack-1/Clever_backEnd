@@ -55,6 +55,12 @@ public class ToDoController {
 		return toDoService.getCategory();
 	}
 	
+	// 그룹 정보 불러오기
+	@PostMapping("/getgroup")
+	public List<Group> getGroupInfo(){
+		return toDoService.getGroupInfo();
+	}
+	
 	// 담당자 목록 불러오기
 	@PostMapping("/getmember")
 	public List<Group> getMember(){

@@ -35,14 +35,16 @@ public class ToDoService {
 	public List<Category> getCategory() {
 		return toDoMapper.getCategory();
 	}
-	
+
+	// 그룹 정보 불러오기
+	public List<Group> getGroupInfo(){
+		return toDoMapper.getGroupInfo();
+	}
 
 
 	// 담당자 불러오기
 	public List<Group> getMember(){
 		return toDoMapper.getMember();
-	
-
 	}
 	
 	// 할 일 가져오기
