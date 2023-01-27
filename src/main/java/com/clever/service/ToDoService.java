@@ -23,6 +23,9 @@ public class ToDoService {
 	
 	// 할 일 등록
 	public int toDoCreate(ToDo toDoCreate) {
+		if(toDoCreate.getMem_id().equals("")) {
+			toDoCreate.setMem_id(null);
+		}
 		return toDoMapper.toDoCreate(toDoCreate);
 	}
 	
