@@ -27,6 +27,11 @@ public class ToDoService {
 		return toDoMapper.toDoCreate(toDoCreate);
 	}
 	
+	// 카테고리 추가
+	public int addToDoCate (ToDo addToDoCate) {
+		return toDoMapper.addToDoCate(addToDoCate);
+	}
+	
 	// 카테고리 가져오기
 	public List<Category> getCategory() {
 		return toDoMapper.getCategory();
@@ -76,5 +81,7 @@ public class ToDoService {
 		return toDoMapper.toDoDetail(toDoDetail);
 
 	}
+	
+	
 
 }
