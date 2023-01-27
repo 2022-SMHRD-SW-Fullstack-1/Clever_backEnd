@@ -26,18 +26,25 @@ public class ToDoService {
 		return toDoMapper.toDoCreate(toDoCreate);
 	}
 	
+	// 카테고리 추가
+	public int addToDoCate (ToDo addToDoCate) {
+		return toDoMapper.addToDoCate(addToDoCate);
+	}
+	
 	// 카테고리 가져오기
 	public List<Category> getCategory() {
 		return toDoMapper.getCategory();
 	}
-	
+
+	// 그룹 정보 불러오기
+	public List<Group> getGroupInfo(){
+		return toDoMapper.getGroupInfo();
+	}
 
 
 	// 담당자 불러오기
 	public List<Group> getMember(){
 		return toDoMapper.getMember();
-	
-
 	}
 	
 	// 할 일 가져오기
@@ -75,5 +82,7 @@ public class ToDoService {
 		return toDoMapper.toDoDetail(toDoDetail);
 
 	}
+	
+	
 
 }

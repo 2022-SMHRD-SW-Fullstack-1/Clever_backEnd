@@ -21,8 +21,16 @@ public interface ToDoMapper {
 	@Insert("insert into tbl_todo values(null, #{cate_seq}, #{todo_title}, #{todo_content}, localtimestamp, #{todo_repeat}, #{mem_id}, #{todo_method})")
 	public int toDoCreate(ToDo toDoCreate);
 	
+	// 그룹 정보 불러오기
+	@Select("select * from tbl_group where #{group_seq} = group_seq")
+	public List<Group> getGroupInfo(); 
+	
+	// 카테고리 추가
+	@Insert("insert into tbl_category values(null, 'ToDo', #{cate_name}, #{group_seq} )")
+	public int addToDoCate(ToDo addToDoCate);
+	
 	// 카테고리 불러오기
-	@Select("select * from tbl_category where cate_type='ToDo' and group_seq='4'")
+	@Select("select * from tbl_category where (cate_type='ToDo' or cate_type='Default') and group_seq=#{group_seq}")
 	public List<Category> getCategory();
 	
 	// 담당자 불러오기
