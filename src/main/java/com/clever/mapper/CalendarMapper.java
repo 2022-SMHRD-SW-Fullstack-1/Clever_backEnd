@@ -2,6 +2,7 @@ package com.clever.mapper;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
@@ -21,12 +22,12 @@ public interface CalendarMapper {
 	//(att_seq, mem_id, att_type, att_date, att_sche_start_time, att_sche_end_time, att_real_start_time, att_real_end_time, group_seq )	
 	
 	
-	@Select("SELECT ta.mem_id, ta.att_seq ,ta.att_real_start_time, ta.att_real_end_time, tm.mem_name, ta.att_date ,att_sche_start_time ,att_sche_end_time,group_seq FROM tbl_attendance ta INNER JOIN tbl_member tm ON ta.mem_id = tm.mem_id and group_seq=#{groupSeq}" )
+	@Select("SELECT ta.mem_id, ta.att_seq ,ta.att_real_start_time, ta.att_real_end_time, tm.mem_name, ta.att_date ,att_sche_start_time ,att_sche_end_time,group_seq FROM tbl_attendance ta INNER JOIN tbl_member tm on ta.mem_id = tm.mem_id where group_seq=#{groupSeq}" )
 	List<Attendance> getSchedule(int groupSeq);
 	
 	
-	@Delete("DELETE from tbl_attendance WHERE att_date=#{date}")//조건절에 그룹이름 나중에 추가하
-	int deleteSchedul(String date);
+	@Delete("DELETE from tbl_attendance WHERE att_date=#{att_date} and group_seq = #{group_seq} ")//조건절에 그룹이름 나중에 추가하
+	int deleteSchedul(Attendance date);
 	
 //	@Insert("insert into tbl_attendance (att_seq, mem_id, att_date, att_sche_start_time, att_sche_end_time, att_real_start_time, att_real_end_time, group_seq) values(null, ((SELECT mem_id from tbl_member  where mem_name = #{mem_name})), #{att_date}, #{att_sche_start_time},#{att_sche_end_time},null, null, #{group_seq})")
 //	int insertSchedule(Attendance sendInfo);
@@ -37,7 +38,7 @@ public interface CalendarMapper {
 	@Insert("insert into tbl_attendance (att_seq, mem_id, att_date, att_sche_start_time, att_sche_end_time, att_real_start_time, att_real_end_time, group_seq) values(null, #{mem_id}, #{att_date}, #{att_sche_start_time},#{att_sche_end_time},null, null, #{group_seq})")
 	int insertSchedule(Attendance sendInfo);
 	
-	@Insert("insert into tbl_attendance (att_seq, mem_id, att_date, att_sche_start_time, att_sche_end_time, att_real_start_time, att_real_end_time, group_seq) values(null, #{mem_id}, #{att_date}, #{att_sche_start_time},#{att_sche_end_time},null, null, #{group_seq})")
+	@Insert("insert into tbl_attendance values (null, #{mem_id}, #{att_date}, #{att_sche_start_time},#{att_sche_end_time},null, null, #{group_seq})")
 	int updateSchedul(Attendance updateInfo);
 	
 	@Select("select tca.att_seq, tca.ch_seq, tca.ch_approve, tca.ch_reject_memo ,tm.mem_name  ,tca.mem_id,  tca.ch_start_time ,tca.ch_end_time ,tca.ch_date ,tca.group_seq from tbl_change_attendance tca inner join tbl_member tm  on tca.ch_approve IS null and  tca.mem_id =tm.mem_id and group_seq=#{groupSeq}")

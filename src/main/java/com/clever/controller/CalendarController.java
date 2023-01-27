@@ -56,13 +56,12 @@ public class CalendarController {
 		
 	}
 	
-	@PostMapping("/deleteSchedul/{date}")
-	public int deleteSchedul(@PathVariable String date) {	
-		
-		int result =calendarService.deleteSchedul(date);
-	
-		return result;
-	}
+//	@RequestMapping(value = "/deleteSchedul", method = RequestMethod.POST)
+//	public void deleteSchedul(@RequestBody ArrayList<Attendance> updateInfo)throws Exception{
+//		
+//		 calendarService.deleteSchedul(updateInfo);
+//		
+//	}
 	
 	@GetMapping("/getModification/{groupSeq}")
 	public List<ChangeAttendance> getModification(@PathVariable int groupSeq){

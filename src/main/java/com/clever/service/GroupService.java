@@ -13,6 +13,7 @@ import com.clever.model.Group;
 public class GroupService {
 	@Autowired
 	GroupMapper groupMapper;
+
 	public int addGroup(Group group_info) {
 		group_info.setGroup_serial(serialNum());
 		return groupMapper.addGroup(group_info);
