@@ -68,13 +68,13 @@ public interface AndroidMapper {
     @Select("SELECT * FROM tbl_todo tt LEFT JOIN tbl_member tm ON tt.mem_id = tm.mem_id WHERE cate_seq = #{cate_seq}")
     public List<ToDo> getToDoList(int cate_seq);
     
-    @Select("SELECT * FROM tbl_todo tt LEFT JOIN tbl_member tm ON tt.mem_id = tm.mem_id WHERE cate_seq IN (SELECT cate_seq FROM tbl_category WHERE group_seq = #{group_seq}) AND tt.mem_id = #{mem_id}")
+    @Select("SELECT * FROM tbl_todo tt LEFT JOIN tbl_member tm ON tt.mem_id = tm.mem_id WHERE cate_seq IN (SELECT cate_seq FROM tbl_category WHERE group_seq = #{group_seq}) AND ( tt.mem_id IS NULL OR tt.mem_id = #{mem_id})")
     public List<ToDo> getMyToDo(int group_seq, String mem_id);
 
     @Select("SELECT * FROM tbl_complete tc LEFT JOIN tbl_member tm ON tc.mem_id = tm.mem_id WHERE cate_seq = #{cate_seq}")
     public List<ToDoComplete> getToDoComplete(int cate_seq);
     
-    @Select("SELECT * FROM tbl_complete tc LEFT JOIN tbl_member tm ON tc.mem_id = tm.mem_id WHERE cate_seq IN (SELECT cate_seq FROM tbl_category WHERE group_seq = #{group_seq}) AND tc.mem_id = #{mem_id} AND cmpl_time LIKE '${selectDate}%'")
+    @Select("SELECT * FROM tbl_complete tc LEFT JOIN tbl_member tm ON tc.mem_id = tm.mem_id WHERE cate_seq IN (SELECT cate_seq FROM tbl_category WHERE group_seq = #{group_seq}) AND ( tc.mem_id IS NULL OR tc.mem_id = #{mem_id} ) AND cmpl_time LIKE '${selectDate}%'")
     public List<ToDoComplete> getMyToDoComplete(int group_seq, String mem_id, String selectDate);
 
     @Select("SELECT todo_title FROM tbl_todo WHERE todo_seq = #{todo_seq}")
