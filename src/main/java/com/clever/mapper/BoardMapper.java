@@ -38,4 +38,7 @@ public interface BoardMapper {
 	
 	@Insert("insert into tbl_notice_comment values(null, #{notice_seq}, #{mem_id}, #{com_content}, now())")
 	public int postBoardComment(NoticeComment notice_info);
+	
+	@Select("select com_seq, tnc.mem_id, tm.mem_name, com_content , com_time from tbl_notice_comment tnc inner join tbl_member tm on tnc.mem_id = tm.mem_id where notice_seq = #{notice_seq} order by com_time desc ;")
+	public List<NoticeComment> getCommentList(int comment_seq);
 }

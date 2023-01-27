@@ -53,6 +53,10 @@ public class BoardService {
 		return boardMapper.postBoardComment(comment_info);
 	}
 	
+	public List<NoticeComment> getCommentList(int notice_seq){
+		return boardMapper.getCommentList(notice_seq);
+	}
+	
 
 	public void fileUpload(Notice notice_info, MultipartFile[] upload_file) {
 		if(upload_file != null) {

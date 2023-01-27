@@ -68,4 +68,10 @@ public class BoardController {
 		
 		return boardService.postBoardComment(comment_info);
 	}
+	
+	@PostMapping("/comment/list")
+	public List<NoticeComment> getCommentList(@RequestBody NoticeComment comment_info){
+		List<NoticeComment> commentList = boardService.getCommentList(comment_info.getNotice_seq());
+		return commentList;
+	}
 }
