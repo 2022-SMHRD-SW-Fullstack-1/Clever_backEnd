@@ -7,18 +7,17 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ToDo {
+public class ChangeAttendance {
 
-	int todo_seq;
-	int cate_seq;
-	String todo_title;
-	String todo_content;
-	String todo_dt;
-	String todo_repeat;
-	String todo_method;
+	int ch_seq;
+	int att_seq;
+	String ch_approve;
+	String ch_reject_memo;
 	String mem_id;
+	String ch_start_time;
+	String ch_end_time;
+	String ch_date;
 	String mem_name;
-	String cate_name;
-
 	int group_seq;
+	
 }

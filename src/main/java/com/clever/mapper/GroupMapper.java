@@ -15,7 +15,6 @@ public interface GroupMapper {
 	public int addGroup(Group group_info);
 	
 	// 그룹 추가 후 관리자 가입
-	@Insert("insert into tbl_join values(null, #{group_seq}, #{mem_id}, now())")
 	public int joinManager(Group group_info);
 	
 	// 그룹 목록 불러오기

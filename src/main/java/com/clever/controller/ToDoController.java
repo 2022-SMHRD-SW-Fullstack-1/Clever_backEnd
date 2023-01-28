@@ -41,13 +41,32 @@ public class ToDoController {
 		return toDoService.toDoCreate(toDoCreate);
 	}
 	
-	// 할 일 카테고리 불러오기
-	@PostMapping("/getcategory")
-	public List<Category> getCategory() {
-		return toDoService.getCategory();
+	// 카테고리 추가
+	@PostMapping("/addcategory")
+	public int addToDoCate(@RequestBody ToDo addToDoCate) {
+		System.out.println("카테고리 : "+ addToDoCate);
+		
+		return toDoService.addToDoCate(addToDoCate);
 	}
 	
-	// 담당자 불러오기
+	// 할 일 카테고리 불러오기
+	@PostMapping("/getcategory")
+	public List<Category> getCategory (@RequestBody Category cate_info) {
+//		return toDoService.getCategory();
+		List <Category> cateList = toDoService.getCategory(cate_info.getGroup_seq());
+//		System.out.println("넘어온 값:" + cate_info);
+		return cateList;
+	}
+	
+	// 그룹 정보 불러오기
+	@PostMapping("/getgroup")
+	public List<Group> getGroupInfo(@RequestBody Group group_info){
+		List <Group> groupList = toDoService.getGroupInfo(group_info.getGroup_seq());
+//		System.out.println("groupInfo" + group_info);
+		return groupList;
+	}
+	
+	// 담당자 목록 불러오기
 	@PostMapping("/getmember")
 	public List<Group> getMember(){
 		return toDoService.getMember();
@@ -55,16 +74,18 @@ public class ToDoController {
 
 	// 할 일 불러오기
 	@PostMapping("/todolist")
-	public List<ToDo> toDoList(ToDo toDoList){
-		return toDoService.toDoList(toDoList);
+	public List<ToDo> getToDoList(@RequestBody ToDo todo_info){
+		System.out.println("cateTodo : "+todo_info);
+		List<ToDo> todoList = toDoService.toDoList(todo_info.getCate_seq());
+		return todoList;
 	}
 	
 
 	// 클릭한 할 일 수정
 	@PostMapping("/edittodo")
 	public String editTodo(@RequestBody ToDo todo_seq) {
+
 		System.out.println("넘어오는 값" + todo_seq);
-		
 		Map<String, Object> result = (toDoService.editTodo(todo_seq));
 		System.out.println(result);
 //		System.out.println("detailPro Service");
