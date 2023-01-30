@@ -35,24 +35,27 @@ public class ToDoService {
 	}
 	
 	// 카테고리 가져오기
-	public List<Category> getCategory() {
-		return toDoMapper.getCategory();
+	public List<Category> getCategory(int group_seq) {
+		return toDoMapper.getCategory(group_seq);
 	}
 
+
 	// 그룹 정보 불러오기
-	public List<Group> getGroupInfo(){
-		return toDoMapper.getGroupInfo();
+	public List<Group> getGroupInfo(int group_seq){
+		return toDoMapper.getGroupInfo(group_seq);
 	}
+
 
 
 	// 담당자 불러오기
 	public List<Group> getMember(){
 		return toDoMapper.getMember();
+
 	}
 	
 	// 할 일 가져오기
-	public List<ToDo> toDoList(ToDo toDoList){
-		return toDoMapper.toDoList(toDoList);
+	public List<ToDo> toDoList(int cate_seq){
+		return toDoMapper.toDoList(cate_seq);
 	}
 	
 
