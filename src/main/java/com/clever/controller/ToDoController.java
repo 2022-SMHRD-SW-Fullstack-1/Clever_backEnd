@@ -37,7 +37,6 @@ public class ToDoController {
 	// 할 일 등록
 	@PostMapping("/addtodo")
 	public int toDoCreate(@RequestBody ToDo toDoCreate) {
-		System.out.println("addtodo : " +toDoCreate);
 		return toDoService.toDoCreate(toDoCreate);
 	}
 	
@@ -63,10 +62,7 @@ public class ToDoController {
 	// 클릭한 할 일 수정
 	@PostMapping("/edittodo")
 	public String editTodo(@RequestBody ToDo todo_seq) {
-		System.out.println("넘어오는 값" + todo_seq);
-		
 		Map<String, Object> result = (toDoService.editTodo(todo_seq));
-		System.out.println(result);
 //		System.out.println("detailPro Service");
 //		result.put("commentView", qnaService.commentView(pro_Num));
 //		System.out.println("commentView Service");
@@ -78,7 +74,6 @@ public class ToDoController {
 	// 완료된 할 일
     @PostMapping("/tododetail")
 		public void toDoDetail (ToDo toDoDetail){
-    	System.out.println("넘어온 값 : "+ toDoDetail);
 //			return toDoService.toDoDetail(toDoDetail);
 		}
     
