@@ -1,9 +1,12 @@
 package com.clever.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import com.clever.model.Join;
 import com.clever.model.Member;
 
 @Mapper
@@ -16,5 +19,7 @@ public interface MemberMapper {
 	// 로그인
 	@Select("select * from tbl_member where mem_id=#{mem_id} and mem_pw=#{mem_pw}")
 	public Member loginMember(Member login_info);
-
+	
+	@Select("select * from tbl_join j inner join tbl_member m on j.mem_id = m.mem_id where group_seq = #{group_seq}")
+	public List<Join> getGroupMemList(Join group_info);
 }
