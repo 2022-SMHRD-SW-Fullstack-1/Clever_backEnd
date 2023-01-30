@@ -22,26 +22,25 @@ public interface ToDoMapper {
 	public int toDoCreate(ToDo toDoCreate);
 	
 	// 그룹 정보 불러오기
-	@Select("select * from tbl_group where #{group_seq} = group_seq")
-	public List<Group> getGroupInfo(); 
+	@Select("select * from tbl_group tg inner join tbl_join tj on tg.group_seq = tj.group_seq where #{mem_id} = tj.mem_id")
+	public List<Group> getGroupInfo(int group_seq); 
 	
 	// 카테고리 추가
 	@Insert("insert into tbl_category values(null, 'ToDo', #{cate_name}, #{group_seq} )")
 	public int addToDoCate(ToDo addToDoCate);
 	
 	// 카테고리 불러오기
-	@Select("select * from tbl_category where (cate_type='ToDo' or cate_type='Default') and group_seq=#{group_seq}")
-	public List<Category> getCategory();
+	@Select("select * from tbl_category where (cate_type='ToDo' and group_seq = #{group_seq}) or cate_type='Default'")
+	public List<Category> getCategory(int group_seq);
 	
 	// 담당자 불러오기
-	@Select ("select tm.mem_id, tm.mem_name from tbl_member tm inner join tbl_join tj on tm.mem_id = tj.mem_id where tj.group_seq='4' ")
+	@Select ("select tm.mem_id, tm.mem_name from tbl_member tm inner join tbl_join tj on tm.mem_id = tj.mem_id where tj.group_seq=#{group_seq} ")
 	public List<Group> getMember();
 	
 	// 할 일 불러오기
-	@Select("select * from tbl_todo")
-	public List<ToDo> toDoList(ToDo toDoList);
+	@Select("select * from tbl_todo where cate_seq = #{cate_seq} ")
+	public List<ToDo> toDoList(int cate_seq);
 	
-
 	// 할 일 수정
 	@Select("select * from tbl_todo where todo_seq = #{todo_seq}")
 	public ToDo editTodo(ToDo todo_seq);
@@ -54,4 +53,7 @@ public interface ToDoMapper {
 	@Select ("select notice_content from tbl_notice where notice_dt ='2023-01-25' ")
 	public List<Notice> todayNotice(Notice todayNotice);
 
+
 }
+
+
