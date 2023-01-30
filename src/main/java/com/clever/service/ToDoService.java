@@ -45,8 +45,6 @@ public class ToDoService {
 		return toDoMapper.getGroupInfo(group_seq);
 	}
 
-
-
 	// 담당자 불러오기
 	public List<Group> getMember(){
 		return toDoMapper.getMember();
@@ -75,8 +73,6 @@ public class ToDoService {
 
 		return result;
 	}
-	
-
 	
 	// 오늘의 특이사항
 	public List<Notice> todayNotice (Notice todayNotice){
