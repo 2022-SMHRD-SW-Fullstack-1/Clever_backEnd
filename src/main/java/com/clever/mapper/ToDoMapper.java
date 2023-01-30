@@ -46,7 +46,7 @@ public interface ToDoMapper {
 	public ToDo editTodo(ToDo todo_seq);
 	
 	//완료된 할 일 상세보기
-	@Select("select * from tbl_complete where todo_seq=#{todo_seq}")
+	@Select("select * from tbl_complete tc inner join tbl_member tm on tc.mem_id = tm.mem_id where cate_seq = #{cate_seq} ")
 	public List<ToDoComplete> toDoDetail(ToDo toDoDetail);
 	
 	// 공지사항 불러오기

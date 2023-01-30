@@ -31,30 +31,24 @@ public class ToDoController {
 	
 	Gson gson = new Gson();
 
-	
 	private final ToDoService toDoService;
 	
 	// 할 일 등록
 	@PostMapping("/addtodo")
 	public int toDoCreate(@RequestBody ToDo toDoCreate) {
-		System.out.println("addtodo : " +toDoCreate);
 		return toDoService.toDoCreate(toDoCreate);
 	}
 	
 	// 카테고리 추가
 	@PostMapping("/addcategory")
 	public int addToDoCate(@RequestBody ToDo addToDoCate) {
-		System.out.println("카테고리 : "+ addToDoCate);
-		
 		return toDoService.addToDoCate(addToDoCate);
 	}
 	
 	// 할 일 카테고리 불러오기
 	@PostMapping("/getcategory")
 	public List<Category> getCategory (@RequestBody Category cate_info) {
-//		return toDoService.getCategory();
 		List <Category> cateList = toDoService.getCategory(cate_info.getGroup_seq());
-//		System.out.println("넘어온 값:" + cate_info);
 		return cateList;
 	}
 	
@@ -62,7 +56,6 @@ public class ToDoController {
 	@PostMapping("/getgroup")
 	public List<Group> getGroupInfo(@RequestBody Group group_info){
 		List <Group> groupList = toDoService.getGroupInfo(group_info.getGroup_seq());
-//		System.out.println("groupInfo" + group_info);
 		return groupList;
 	}
 	
@@ -75,7 +68,7 @@ public class ToDoController {
 	// 할 일 불러오기
 	@PostMapping("/todolist")
 	public List<ToDo> getToDoList(@RequestBody ToDo todo_info){
-		System.out.println("cateTodo : "+todo_info);
+//		System.out.println("cateTodo : "+todo_info);
 		List<ToDo> todoList = toDoService.toDoList(todo_info.getCate_seq());
 		return todoList;
 	}
@@ -85,7 +78,6 @@ public class ToDoController {
 	@PostMapping("/edittodo")
 	public String editTodo(@RequestBody ToDo todo_seq) {
 
-		System.out.println("넘어오는 값" + todo_seq);
 		Map<String, Object> result = (toDoService.editTodo(todo_seq));
 		System.out.println(result);
 //		System.out.println("detailPro Service");
@@ -97,9 +89,9 @@ public class ToDoController {
 	}
 	
 	// 완료된 할 일
-    @PostMapping("/tododetail")
+    @PostMapping("/todocom")
 		public List<ToDoComplete> toDoDetail (@RequestBody ToDo toDoDetail){
-    	System.out.println("넘어온 값 : "+ toDoDetail);
+//    	System.out.println("넘어온 값 : "+ toDoDetail);
 			return toDoService.toDoDetail(toDoDetail);
 		}
     
