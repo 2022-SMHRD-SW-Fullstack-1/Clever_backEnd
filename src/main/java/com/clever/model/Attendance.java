@@ -18,4 +18,6 @@ public class Attendance {
 	String att_real_end_time;	
 	String mem_name;
 	int group_seq;
+	int late_time;
+	int total_work_time;
 }
