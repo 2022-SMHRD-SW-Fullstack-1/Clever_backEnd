@@ -18,7 +18,7 @@ public interface GroupMapper {
 	public int joinManager(Group group_info);
 	
 	// 그룹 목록 불러오기
-	@Select("select group_seq, group_name from tbl_group where mem_id=#{mem_id}")
+	@Select("select group_seq, group_name, group_dt from tbl_group where mem_id=#{mem_id}")
 	public List<Group> getGroupList(String mem_id);
 	
 	// 그룹 삭제

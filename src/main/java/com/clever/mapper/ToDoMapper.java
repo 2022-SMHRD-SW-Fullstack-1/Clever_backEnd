@@ -9,6 +9,8 @@ import org.apache.ibatis.annotations.Select;
 
 import com.clever.model.Category;
 import com.clever.model.Group;
+import com.clever.model.Join;
+import com.clever.model.Member;
 import com.clever.model.Notice;
 
 import com.clever.model.ToDo;
@@ -51,12 +53,12 @@ public interface ToDoMapper {
 	public int toDoDelete(int todo_seq);
 	
 	//완료된 할 일 상세보기
-	@Select("select * from tbl_complete where todo_seq=#{todo_seq}")
+	@Select("select * from tbl_complete tc inner join tbl_member tm on tc.mem_id = tm.mem_id where cate_seq = #{cate_seq} ")
 	public List<ToDoComplete> toDoDetail(ToDo toDoDetail);
 	
-	// 공지사항 불러오기
-	@Select ("select notice_content from tbl_notice where notice_dt ='2023-01-25' ")
-	public List<Notice> todayNotice(Notice todayNotice);
+	// 일일 특이사항 불러오기
+	@Select ("select cmpl_memo from tbl_complete where DATE_FORMAT(cmpl_time, '%Y-%m-%d')  = DATE_FORMAT(NOW(), '%Y-%m-%d')")
+	public List<ToDoComplete> todayMemo(ToDoComplete todayMemo);
 
 
 }

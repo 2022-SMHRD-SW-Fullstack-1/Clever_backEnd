@@ -22,11 +22,11 @@ public interface CalendarMapper {
 	//(att_seq, mem_id, att_type, att_date, att_sche_start_time, att_sche_end_time, att_real_start_time, att_real_end_time, group_seq )	
 	
 	
-	@Select("SELECT ta.mem_id, ta.att_seq ,ta.att_real_start_time, ta.att_real_end_time, tm.mem_name, ta.att_date ,att_sche_start_time ,att_sche_end_time,group_seq FROM tbl_attendance ta INNER JOIN tbl_member tm on ta.mem_id = tm.mem_id where group_seq=#{groupSeq}" )
+	@Select("SELECT TIMESTAMPDIFF(minute,ta.att_real_start_time, ta.att_real_end_time) as total_work_time, TIMESTAMPDIFF(minute,ta.att_sche_start_time, ta.att_real_start_time) as late_time,ta.mem_id, ta.att_seq ,ta.att_real_start_time, ta.att_real_end_time, tm.mem_name, ta.att_date ,att_sche_start_time ,att_sche_end_time,group_seq FROM tbl_attendance ta INNER JOIN tbl_member tm on ta.mem_id = tm.mem_id where group_seq=#{groupSeq}" )
 	List<Attendance> getSchedule(int groupSeq);
 	
 	
-	@Delete("DELETE from tbl_attendance WHERE att_date=#{att_date} and group_seq = #{group_seq} ")//조건절에 그룹이름 나중에 추가하
+	@Delete("DELETE from tbl_attendance WHERE att_date=#{att_date} and group_seq = #{group_seq} ")
 	int deleteSchedul(Attendance date);
 	
 //	@Insert("insert into tbl_attendance (att_seq, mem_id, att_date, att_sche_start_time, att_sche_end_time, att_real_start_time, att_real_end_time, group_seq) values(null, ((SELECT mem_id from tbl_member  where mem_name = #{mem_name})), #{att_date}, #{att_sche_start_time},#{att_sche_end_time},null, null, #{group_seq})")
