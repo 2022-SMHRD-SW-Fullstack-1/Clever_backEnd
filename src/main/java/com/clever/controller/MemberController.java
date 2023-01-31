@@ -33,4 +33,9 @@ public class MemberController {
 	public List<Join> getGroupMemList(@RequestBody Join group_info) {
 		return memberService.getGroupMemList(group_info);
 	}
+	
+	@PostMapping("/group/delete")
+	public int deleteGroupMem(@RequestBody Join join_info) {
+		return memberService.deleteGroupMem(join_info);
+	}
 }
