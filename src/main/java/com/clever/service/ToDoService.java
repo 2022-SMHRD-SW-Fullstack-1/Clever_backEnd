@@ -10,6 +10,7 @@ import com.clever.mapper.ToDoMapper;
 import com.clever.model.Category;
 import com.clever.model.Group;
 import com.clever.model.Notice;
+
 import com.clever.model.ToDo;
 import com.clever.model.ToDoComplete;
 
@@ -22,26 +23,37 @@ public class ToDoService {
 	
 	// 할 일 등록
 	public int toDoCreate(ToDo toDoCreate) {
+		if(toDoCreate.getMem_id().equals("")) {
+			toDoCreate.setMem_id(null);
+		}
 		return toDoMapper.toDoCreate(toDoCreate);
 	}
 	
-	// 카테고리 가져오기
-	public List<Category> getCategory() {
-		return toDoMapper.getCategory();
+	// 카테고리 추가
+	public int addToDoCate (ToDo addToDoCate) {
+		return toDoMapper.addToDoCate(addToDoCate);
 	}
 	
+	// 카테고리 가져오기
+	public List<Category> getCategory(int group_seq) {
+		return toDoMapper.getCategory(group_seq);
+	}
 
+
+	// 그룹 정보 불러오기
+	public List<Group> getGroupInfo(int group_seq){
+		return toDoMapper.getGroupInfo(group_seq);
+	}
 
 	// 담당자 불러오기
 	public List<Group> getMember(){
 		return toDoMapper.getMember();
-	
 
 	}
 	
 	// 할 일 가져오기
-	public List<ToDo> toDoList(ToDo toDoList){
-		return toDoMapper.toDoList(toDoList);
+	public List<ToDo> toDoList(int cate_seq){
+		return toDoMapper.toDoList(cate_seq);
 	}
 	
 
@@ -62,8 +74,6 @@ public class ToDoService {
 		return result;
 	}
 	
-
-	
 	// 오늘의 특이사항
 	public List<Notice> todayNotice (Notice todayNotice){
 		return toDoMapper.todayNotice(todayNotice);
@@ -74,5 +84,7 @@ public class ToDoService {
 		return toDoMapper.toDoDetail(toDoDetail);
 
 	}
+	
+	
 
 }
