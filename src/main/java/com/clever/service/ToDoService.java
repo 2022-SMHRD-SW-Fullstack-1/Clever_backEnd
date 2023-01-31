@@ -76,7 +76,11 @@ public class ToDoService {
 		return result;
 	}
 	
-
+	// 할 일 삭제
+	public int toDoDelete(int todo_seq) {
+		return toDoMapper.toDoDelete(todo_seq);
+	}
+	
 	
 	// 오늘의 특이사항
 	public List<Notice> todayNotice (Notice todayNotice){
