@@ -41,7 +41,7 @@ public interface CalendarMapper {
 	@Insert("insert into tbl_attendance values (null, #{mem_id}, #{att_date}, #{att_sche_start_time},#{att_sche_end_time},null, null, #{group_seq})")
 	int updateSchedul(Attendance updateInfo);
 	
-	@Select("select tca.att_seq, tca.ch_seq, tca.ch_approve, tca.ch_reject_memo ,tm.mem_name  ,tca.mem_id,  tca.ch_start_time ,tca.ch_end_time ,tca.ch_date ,tca.group_seq from tbl_change_attendance tca inner join tbl_member tm  on tca.ch_approve IS null and  tca.mem_id =tm.mem_id and group_seq=#{groupSeq}")
+	@Select("select tca.att_seq, tca.ch_seq, tca.ch_approve, tca.ch_reject_memo ,tm.mem_name  ,tca.mem_id,  tca.ch_start_time ,tca.ch_end_time ,tca.ch_date ,tca.group_seq from tbl_change_attendance tca inner join tbl_member tm  on   tca.mem_id =tm.mem_id and group_seq=#{groupSeq}")
 	List<ChangeAttendance>getModification(int groupSeq);
 	
 	@Update("update tbl_change_attendance set ch_approve =#{ch_approve} where ch_seq=#{ch_seq}")
