@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.clever.model.ToDoComplete;
 import com.clever.model.Category;
 import com.clever.model.Group;
+import com.clever.model.Join;
+import com.clever.model.Member;
 import com.clever.model.Notice;
 
 import com.clever.model.ToDo;
@@ -96,9 +98,9 @@ public class ToDoController {
 		}
     
     // 오늘의 특이사항
-    @PostMapping("/todaynotice")
-    public List<Notice> todayNotice (Notice todayNotice){
-    	return toDoService.todayNotice(todayNotice);
+    @PostMapping("/todaymemo")
+    public List<ToDoComplete> todayMemo (ToDoComplete todayMemo){
+    	return toDoService.todayMemo(todayMemo);
     }
 
 }
