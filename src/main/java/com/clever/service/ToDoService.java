@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.clever.mapper.ToDoMapper;
 import com.clever.model.Category;
 import com.clever.model.Group;
+import com.clever.model.Join;
+import com.clever.model.Member;
 import com.clever.model.Notice;
 
 import com.clever.model.ToDo;
@@ -48,8 +50,8 @@ public class ToDoService {
 	// 담당자 불러오기
 	public List<Group> getMember(){
 		return toDoMapper.getMember();
-
 	}
+
 	
 	// 할 일 가져오기
 	public List<ToDo> toDoList(int cate_seq){
@@ -75,8 +77,8 @@ public class ToDoService {
 	}
 	
 	// 오늘의 특이사항
-	public List<Notice> todayNotice (Notice todayNotice){
-		return toDoMapper.todayNotice(todayNotice);
+	public List<ToDoComplete> todayMemo (ToDoComplete todayMemo){
+		return toDoMapper.todayMemo(todayMemo);
 	}
 	
 	// 완료된 할 일
