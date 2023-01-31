@@ -79,7 +79,6 @@ public class ToDoController {
 	public String editTodo(@RequestBody ToDo todo_seq) {
 
 		Map<String, Object> result = (toDoService.editTodo(todo_seq));
-		System.out.println(result);
 //		System.out.println("detailPro Service");
 //		result.put("commentView", qnaService.commentView(pro_Num));
 //		System.out.println("commentView Service");
@@ -89,10 +88,11 @@ public class ToDoController {
 	}
 	
 	// 완료된 할 일
+
     @PostMapping("/todocom")
 		public List<ToDoComplete> toDoDetail (@RequestBody ToDo toDoDetail){
-//    	System.out.println("넘어온 값 : "+ toDoDetail);
 			return toDoService.toDoDetail(toDoDetail);
+
 		}
     
     // 오늘의 특이사항
