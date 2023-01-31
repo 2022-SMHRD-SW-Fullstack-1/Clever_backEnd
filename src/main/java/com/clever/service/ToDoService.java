@@ -83,7 +83,6 @@ public class ToDoService {
 		return toDoMapper.toDoDelete(todo_seq);
 	}
 	
-	
 	// 오늘의 특이사항
 	public List<ToDoComplete> todayMemo (ToDoComplete todayMemo){
 		return toDoMapper.todayMemo(todayMemo);
