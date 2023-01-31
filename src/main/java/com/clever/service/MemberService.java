@@ -26,5 +26,9 @@ public class MemberService {
 		return memberMapper.getGroupMemList(group_info);
 	}
 	
+	public int deleteGroupMem(Join join_info) {
+		return memberMapper.deleteGroupMem(join_info);
+	}
+	
 
 }
