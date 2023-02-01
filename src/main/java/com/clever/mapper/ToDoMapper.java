@@ -2,6 +2,7 @@ package com.clever.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -46,6 +47,10 @@ public interface ToDoMapper {
 	// 할 일 수정
 	@Select("select * from tbl_todo where todo_seq = #{todo_seq}")
 	public ToDo editTodo(ToDo todo_seq);
+	
+	// 할 일 삭제
+	@Delete("delete from tbl_todo where todo_seq = #{todo_seq}")
+	public int toDoDelete(int todo_seq);
 	
 	//완료된 할 일 상세보기
 	@Select("select * from tbl_complete tc inner join tbl_member tm on tc.mem_id = tm.mem_id where cate_seq = #{cate_seq} ")

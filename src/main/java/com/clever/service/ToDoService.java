@@ -47,6 +47,8 @@ public class ToDoService {
 		return toDoMapper.getGroupInfo(group_seq);
 	}
 
+
+
 	// 담당자 불러오기
 	public List<Group> getMember(){
 		return toDoMapper.getMember();
@@ -74,6 +76,11 @@ public class ToDoService {
 		result.put("todo_method", todo.getTodo_repeat());
 
 		return result;
+	}
+	
+	// 할 일 삭제
+	public int toDoDelete(int todo_seq) {
+		return toDoMapper.toDoDelete(todo_seq);
 	}
 	
 	// 오늘의 특이사항
