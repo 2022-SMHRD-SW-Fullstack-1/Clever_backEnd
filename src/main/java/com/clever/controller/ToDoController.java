@@ -74,9 +74,8 @@ public class ToDoController {
 		List<ToDo> todoList = toDoService.toDoList(todo_info.getCate_seq());
 		return todoList;
 	}
-	
 
-	// 클릭한 할 일 수정
+	// 할 일 수정
 	@PostMapping("/edittodo")
 	public String editTodo(@RequestBody ToDo todo_seq) {
 
@@ -88,6 +87,13 @@ public class ToDoController {
 		
 		return gson.toJson(result);
 	}
+	
+	 // 할 일 삭제
+    @PostMapping("/delete")
+    public int toDoDelete (@RequestBody ToDo todo_info) {
+    	return toDoService.toDoDelete(todo_info.getTodo_seq());
+    }
+	
 	
 	// 완료된 할 일
 
@@ -102,5 +108,7 @@ public class ToDoController {
     public List<ToDoComplete> todayMemo (ToDoComplete todayMemo){
     	return toDoService.todayMemo(todayMemo);
     }
+    
+   
 
 }

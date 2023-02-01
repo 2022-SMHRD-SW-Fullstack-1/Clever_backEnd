@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.clever.model.Join;
 import com.clever.model.Member;
 import com.clever.service.MemberService;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
+
 @RequestMapping("/member")
 @RestController
 public class MemberController {
