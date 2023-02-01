@@ -23,17 +23,17 @@ public class BoardController {
 	@Autowired
 	BoardService boardService;
 	
-	@PostMapping("/addcategory")
+	@PostMapping("/category/add")
 	public int addBoardCategory(@RequestBody Category cate_info) {
 		return boardService.addBoardCategory(cate_info);
 	}
 	
-	@PostMapping("/countcategory")
+	@PostMapping("/category/count")
 	public int countBoardCategory(@RequestBody Category cate_info) {
 		return boardService.countBoardCategory(cate_info);
 	}
 	
-	@PostMapping("/getcategory")
+	@PostMapping("/category/list")
 	public List<Category> getBoardCategory(@RequestBody Category cate_info) {	
 		List<Category> cateList = boardService.getBoardCategory(cate_info.getGroup_seq());
 		return cateList;
