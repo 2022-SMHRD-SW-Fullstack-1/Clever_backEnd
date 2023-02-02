@@ -50,8 +50,8 @@ public class ToDoService {
 
 
 	// 담당자 불러오기
-	public List<Group> getMember(){
-		return toDoMapper.getMember();
+	public List<Member> getMember(int group_seq){
+		return toDoMapper.getMember(group_seq);
 	}
 
 	
@@ -60,22 +60,9 @@ public class ToDoService {
 		return toDoMapper.toDoList(cate_seq);
 	}
 	
-
 	// 할 일 수정
-	public HashMap<String, Object> editTodo(ToDo todo_seq){
-		ToDo todo = toDoMapper.editTodo(todo_seq);
-		
-		HashMap<String, Object> result = new HashMap<String, Object>();
-		result.put("todo_seq", todo.getTodo_seq());
-		result.put("cate_seq", todo.getCate_seq());
-		result.put("todo_title)", todo.getTodo_title());
-		result.put("todo_content", todo.getTodo_content());
-		result.put("todo_dt", todo.getTodo_dt());
-		result.put("todo_repeat", todo.getTodo_repeat());
-		result.put("mem_id", todo.getMem_id());
-		result.put("todo_method", todo.getTodo_repeat());
-
-		return result;
+	public ToDo editTodo(ToDo todo_info){
+		return toDoMapper.editTodo(todo_info);
 	}
 	
 	// 할 일 삭제

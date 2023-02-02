@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.clever.model.Category;
 import com.clever.model.Group;
@@ -38,15 +39,15 @@ public interface ToDoMapper {
 	
 	// 담당자 불러오기
 	@Select ("select tm.mem_id, tm.mem_name from tbl_member tm inner join tbl_join tj on tm.mem_id = tj.mem_id where tj.group_seq=#{group_seq} ")
-	public List<Group> getMember();
+	public List<Member> getMember(int group_seq);
 	
 	// 할 일 불러오기
 	@Select("select * from tbl_todo where cate_seq = #{cate_seq} ")
 	public List<ToDo> toDoList(int cate_seq);
 	
 	// 할 일 수정
-	@Select("select * from tbl_todo where todo_seq = #{todo_seq}")
-	public ToDo editTodo(ToDo todo_seq);
+	@Update("update tbl_todo set todo_seq = #{todo_seq}, cate_seq = #{cate_seq}, todo_title = #{todo_title}, todo_content = #{todo_content}, todo_dt = localtimestamp, todo_repeat = #{todo_repeat}, mem_id = #{mem_id}, todo_method = #{todo_method}")
+	public ToDo editTodo(ToDo todo_info);
 	
 	// 할 일 삭제
 	@Delete("delete from tbl_todo where todo_seq = #{todo_seq}")
