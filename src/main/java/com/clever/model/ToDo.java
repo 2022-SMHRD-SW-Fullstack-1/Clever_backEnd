@@ -20,4 +20,5 @@ public class ToDo {
 	String mem_name;
 	String cate_name;
 
+	int group_seq;
 }

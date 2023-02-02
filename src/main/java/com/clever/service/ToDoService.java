@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.clever.mapper.ToDoMapper;
 import com.clever.model.Category;
 import com.clever.model.Group;
+import com.clever.model.Join;
+import com.clever.model.Member;
 import com.clever.model.Notice;
 
 import com.clever.model.ToDo;
@@ -23,6 +25,9 @@ public class ToDoService {
 	
 	// 할 일 등록
 	public int toDoCreate(ToDo toDoCreate) {
+		if(toDoCreate.getMem_id().equals("")) {
+			toDoCreate.setMem_id(null);
+		}
 		return toDoMapper.toDoCreate(toDoCreate);
 	}
 	
@@ -32,24 +37,27 @@ public class ToDoService {
 	}
 	
 	// 카테고리 가져오기
-	public List<Category> getCategory() {
-		return toDoMapper.getCategory();
+	public List<Category> getCategory(int group_seq) {
+		return toDoMapper.getCategory(group_seq);
 	}
 
+
 	// 그룹 정보 불러오기
-	public List<Group> getGroupInfo(){
-		return toDoMapper.getGroupInfo();
+	public List<Group> getGroupInfo(int group_seq){
+		return toDoMapper.getGroupInfo(group_seq);
 	}
+
 
 
 	// 담당자 불러오기
 	public List<Group> getMember(){
 		return toDoMapper.getMember();
 	}
+
 	
 	// 할 일 가져오기
-	public List<ToDo> toDoList(ToDo toDoList){
-		return toDoMapper.toDoList(toDoList);
+	public List<ToDo> toDoList(int cate_seq){
+		return toDoMapper.toDoList(cate_seq);
 	}
 	
 
@@ -70,11 +78,14 @@ public class ToDoService {
 		return result;
 	}
 	
-
+	// 할 일 삭제
+	public int toDoDelete(int todo_seq) {
+		return toDoMapper.toDoDelete(todo_seq);
+	}
 	
 	// 오늘의 특이사항
-	public List<Notice> todayNotice (Notice todayNotice){
-		return toDoMapper.todayNotice(todayNotice);
+	public List<ToDoComplete> todayMemo (ToDoComplete todayMemo){
+		return toDoMapper.todayMemo(todayMemo);
 	}
 	
 	// 완료된 할 일
