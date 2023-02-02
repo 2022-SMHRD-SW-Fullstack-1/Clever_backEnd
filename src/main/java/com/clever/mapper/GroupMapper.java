@@ -32,4 +32,7 @@ public interface GroupMapper {
 	
 	@Update("update tbl_group set group_name = #{group_name} where group_seq = #{group_seq}")
 	public int editGroupName(Group group_info);
+
 }
+
+

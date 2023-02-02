@@ -100,10 +100,20 @@ public class AndroidController {
     public List<ToDo> getToDoList(@RequestBody ToDo todo) {
         return androidService.getToDoList(todo.getCate_seq());
     }
+    
+    @PostMapping("/android/getMyToDo")
+    public List<ToDo> getMyToDo(@RequestParam int group_seq, String mem_id){
+    	return androidService.getMyToDo(group_seq, mem_id);
+    }
 
     @PostMapping("/android/getToDoComplete")
     public List<ToDoComplete> getToDoComplete(@RequestBody ToDoComplete cmpl_info) {
         return androidService.getToDoComplete(cmpl_info.getCate_seq());
+    }
+    
+    @PostMapping("/android/getMyToDoComplete")
+    public List<ToDoComplete> getMyToDoComplete(int group_seq, String mem_id, String selectDate){
+    	return androidService.getMyToDoComplete(group_seq, mem_id, selectDate);
     }
 
     @PostMapping("/android/getToDo")
@@ -210,4 +220,20 @@ public class AndroidController {
     public double getAttTime(@RequestParam String mem_id, int group_seq, String start_date, String end_date){
         return androidService.getAttTime(mem_id, group_seq, start_date, end_date);
     }
+    
+    @PostMapping("/android/getTodayAtt")
+    public Attendance getTodayAtt(@RequestParam int group_seq, String mem_id, String att_date) {
+    	return androidService.getTodayAtt(group_seq, mem_id, att_date);
+    }
+    
+    @PostMapping("/android/attStart")
+    public int attStart(@RequestParam int att_seq, String att_real_start_time) {
+    	return androidService.attStart(att_seq, att_real_start_time);
+    }
+    
+    @PostMapping("/android/attEnd")
+    public int attEnd(@RequestParam int att_seq, String att_real_end_time) {
+    	return androidService.attEnd(att_seq, att_real_end_time);
+    }
+    
 }
