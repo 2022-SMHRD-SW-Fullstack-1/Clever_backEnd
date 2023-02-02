@@ -144,5 +144,12 @@ public interface AndroidMapper {
     @Select("SELECT * FROM tbl_attendance WHERE group_seq = #{group_seq} AND mem_id = #{mem_id} AND att_date >= #{start_date} AND att_date <= #{end_date}")
     public List<Attendance> getAttTime(String mem_id, int group_seq, String start_date, String end_date);
 
+    @Select("SELECT * FROM tbl_attendance WHERE group_seq = #{group_seq} AND mem_id = #{mem_id} AND att_date = #{att_date}")
+    public Attendance getTodayAtt(int group_seq, String mem_id, String att_date);
+    
+    @Update("UPDATE tbl_attendance SET att_real_start_time = #{att_real_start_time} WHERE att_seq = #{att_seq}")
+    public int attStart(int att_seq, String att_real_start_time);
 
+    @Update("UPDATE tbl_attendance SET att_real_end_time = #{att_real_end_time} WHERE att_seq = #{att_seq}")
+    public int attEnd(int att_seq, String att_real_end_time);
 }

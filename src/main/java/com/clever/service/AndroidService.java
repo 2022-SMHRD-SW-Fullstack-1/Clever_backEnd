@@ -248,4 +248,19 @@ public class AndroidService {
         }
         return result;
     }
+    
+    public Attendance getTodayAtt(int group_seq, String mem_id, String att_date) {
+    	return androidMapper.getTodayAtt(group_seq, mem_id, att_date);
+    }
+    
+    public int attStart(int att_seq, String att_real_start_time) {
+    	return androidMapper.attStart(att_seq, att_real_start_time);
+    }
+    
+    public int attEnd(int att_seq, String att_real_end_time) {
+    	return androidMapper.attEnd(att_seq, att_real_end_time);
+    }
+    
+    
+    
 }
