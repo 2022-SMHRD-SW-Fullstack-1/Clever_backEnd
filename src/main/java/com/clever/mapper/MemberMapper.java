@@ -17,6 +17,9 @@ public interface MemberMapper {
 	@Insert("insert into tbl_member values(#{mem_id}, #{mem_pw},#{mem_name}, #{mem_email}, NOW(), 'N')")
 	public int joinMember(Member join_info);
 	
+	@Select("select count(*) from tbl_member where mem_id = #{mem_id}")
+	public int checkId(Member join_info);
+	
 	// 로그인
 	@Select("select * from tbl_member where mem_id=#{mem_id} and mem_pw=#{mem_pw}")
 	public Member loginMember(Member login_info);

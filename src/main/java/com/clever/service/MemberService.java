@@ -18,6 +18,10 @@ public class MemberService {
 		return memberMapper.joinMember(join_info);
 	}
 	
+	public int checkId(Member join_info) {
+		return memberMapper.checkId(join_info);
+	}
+	
 	public Member loginMember(Member login_info) {
 		return memberMapper.loginMember(login_info);
 	}

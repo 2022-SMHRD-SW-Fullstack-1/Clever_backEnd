@@ -25,6 +25,11 @@ public class MemberController {
 		return memberService.joinMember(join_info);
 	}
 	
+	@PostMapping("/join/checkid")
+	public int checkId(@RequestBody Member join_info) {
+		return memberService.checkId(join_info);
+	}
+	
 	@PostMapping("/login")
 	public Member loginMember(@RequestBody Member login_info) {
 		return memberService.loginMember(login_info);
