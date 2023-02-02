@@ -77,8 +77,7 @@ public class ToDoController {
 
 	// 할 일 수정
 	@PostMapping("/edit")
-	public ToDo editTodo(@RequestPart (value="inputValue", required=false) ToDo todo_info) {
-//		public ToDo editTodo(@RequestBody ToDo todo_info) {
+	public ToDo editTodo(@RequestBody ToDo todo_info)  {
 		return toDoService.editTodo(todo_info);
 	}
 	

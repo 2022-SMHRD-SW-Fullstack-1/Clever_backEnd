@@ -34,7 +34,7 @@ public interface ToDoMapper {
 	public int addToDoCate(ToDo addToDoCate);
 	
 	// 카테고리 불러오기
-	@Select("select * from tbl_category where (cate_type='ToDo' and group_seq = #{group_seq}) or cate_type='Default'")
+	@Select("select * from tbl_category where group_seq = #{group_seq} and (cate_type='ToDo' or cate_type='Default')")
 	public List<Category> getCategory(int group_seq);
 	
 	// 담당자 불러오기

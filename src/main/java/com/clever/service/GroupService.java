@@ -35,6 +35,10 @@ public class GroupService {
 		return groupMapper.getInviteCode(group_seq);
 	}
 	
+	public int editGroupName(Group group_info) {
+		return groupMapper.editGroupName(group_info);
+	}
+	
 	public String serialNum() {
 		
 		StringBuffer key = new StringBuffer();

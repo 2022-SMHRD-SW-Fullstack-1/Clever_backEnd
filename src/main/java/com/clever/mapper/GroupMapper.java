@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.clever.model.Group;
 
@@ -29,4 +30,6 @@ public interface GroupMapper {
 	@Select("select group_serial from tbl_group where group_seq=#{grouq_seq}")
 	public String getInviteCode(int grouq_seq);
 	
+	@Update("update tbl_group set group_name = #{group_name} where group_seq = #{group_seq}")
+	public int editGroupName(Group group_info);
 }
