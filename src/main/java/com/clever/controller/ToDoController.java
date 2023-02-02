@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.clever.model.ToDoComplete;
@@ -30,8 +31,6 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/todolist")
 @RestController
 public class ToDoController {
-	
-	Gson gson = new Gson();
 
 	private final ToDoService toDoService;
 	
@@ -63,8 +62,9 @@ public class ToDoController {
 	
 	// 담당자 목록 불러오기
 	@PostMapping("/getmember")
-	public List<Group> getMember(){
-		return toDoService.getMember();
+	public List<Member> getMember(@RequestBody Group group_info){
+		List <Member> memList = toDoService.getMember(group_info.getGroup_seq());
+		return memList;
 	}
 
 	// 할 일 불러오기
@@ -76,16 +76,9 @@ public class ToDoController {
 	}
 
 	// 할 일 수정
-	@PostMapping("/edittodo")
-	public String editTodo(@RequestBody ToDo todo_seq) {
-
-		Map<String, Object> result = (toDoService.editTodo(todo_seq));
-//		System.out.println("detailPro Service");
-//		result.put("commentView", qnaService.commentView(pro_Num));
-//		System.out.println("commentView Service");
-//		System.out.println("넘겨주는 comments값 : " + result);
-		
-		return gson.toJson(result);
+	@PostMapping("/edit")
+	public ToDo editTodo(@RequestBody ToDo todo_info)  {
+		return toDoService.editTodo(todo_info);
 	}
 	
 	 // 할 일 삭제
@@ -96,7 +89,6 @@ public class ToDoController {
 	
 	
 	// 완료된 할 일
-
     @PostMapping("/todocom")
 		public List<ToDoComplete> toDoDetail (@RequestBody ToDo toDoDetail){
 			return toDoService.toDoDetail(toDoDetail);
