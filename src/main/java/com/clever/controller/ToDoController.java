@@ -34,7 +34,7 @@ public class ToDoController {
 
 	private final ToDoService toDoService;
 	
-	// 할 일 등록
+	// 할일 등록
 	@PostMapping("/addtodo")
 	public int toDoCreate(@RequestBody ToDo toDoCreate) {
 		return toDoService.toDoCreate(toDoCreate);
@@ -46,7 +46,7 @@ public class ToDoController {
 		return toDoService.addToDoCate(addToDoCate);
 	}
 	
-	// 할 일 카테고리 불러오기
+	// 할일 카테고리 불러오기
 	@PostMapping("/getcategory")
 	public List<Category> getCategory (@RequestBody Category cate_info) {
 		List <Category> cateList = toDoService.getCategory(cate_info.getGroup_seq());
@@ -67,10 +67,9 @@ public class ToDoController {
 		return memList;
 	}
 
-	// 할 일 불러오기
+	// 할일 불러오기
 	@PostMapping("/todolist")
 	public List<ToDo> getToDoList(@RequestBody ToDo todo_info){
-//		System.out.println("cateTodo : "+todo_info);
 		List<ToDo> todoList = toDoService.toDoList(todo_info.getCate_seq());
 		return todoList;
 	}

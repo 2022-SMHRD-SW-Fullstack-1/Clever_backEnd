@@ -48,24 +48,23 @@ public class ToDoService {
 	}
 
 
-
 	// 담당자 불러오기
 	public List<Member> getMember(int group_seq){
 		return toDoMapper.getMember(group_seq);
 	}
 
 	
-	// 할 일 가져오기
+	// 할일 가져오기
 	public List<ToDo> toDoList(int cate_seq){
 		return toDoMapper.toDoList(cate_seq);
 	}
 	
-	// 할 일 수정
+	// 할일 수정
 	public ToDo editTodo(ToDo todo_info){
 		return toDoMapper.editTodo(todo_info);
 	}
 	
-	// 할 일 삭제
+	// 할일 삭제
 	public int toDoDelete(int todo_seq) {
 		return toDoMapper.toDoDelete(todo_seq);
 	}
