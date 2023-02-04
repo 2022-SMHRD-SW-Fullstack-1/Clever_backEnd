@@ -41,6 +41,10 @@ public interface ToDoMapper {
 	@Select ("select tm.mem_id, tm.mem_name from tbl_member tm inner join tbl_join tj on tm.mem_id = tj.mem_id where tj.group_seq=#{group_seq} ")
 	public List<Member> getMember(int group_seq);
 	
+	// 전체 할일 불러오기
+	@Select("SELECT * from tbl_todo tt left join tbl_category tc on tt.cate_seq = tc.cate_seq where cate_type = 'ToDo' and tc.group_seq = #{group_seq}")
+	public List<ToDo> getAllToDo(int group_seq);
+	
 	// 할 일 불러 오기
 	@Select("select * from tbl_todo where cate_seq = #{cate_seq} ")
 	public List<ToDo> toDoList(int cate_seq);
