@@ -53,6 +53,10 @@ public class ToDoService {
 		return toDoMapper.getMember(group_seq);
 	}
 
+	// 전체 할일 가져오기
+	public List<ToDo> getAllToDo(int group_seq){
+		return toDoMapper.getAllToDo(group_seq);
+	}
 	
 	// 할일 가져오기
 	public List<ToDo> toDoList(int cate_seq){

@@ -66,6 +66,13 @@ public class ToDoController {
 		List <Member> memList = toDoService.getMember(group_info.getGroup_seq());
 		return memList;
 	}
+	
+	// 할일 전체 불러오기
+	@PostMapping("/alltodo")
+	public List<ToDo> getAllToDo(@RequestBody ToDo todo_info){
+		List<ToDo> allToDoList = toDoService.getAllToDo(todo_info.getGroup_seq());
+		return allToDoList;
+	}
 
 	// 할일 불러오기
 	@PostMapping("/todolist")
