@@ -11,6 +11,8 @@ import com.clever.mapper.CalendarMapper;
 import com.clever.model.Attendance;
 import com.clever.model.ChangeAttendance;
 import com.clever.model.Join;
+import com.clever.model.ToDo;
+import com.clever.model.ToDoComplete;
 
 @Service
 public class CalendarService {
@@ -108,6 +110,14 @@ public class CalendarService {
 	
 	public List<Join> getWorkerList(int groupSeq){
 		return calendarMapper.getWorkerList(groupSeq);
+	}
+	
+	public List<ToDo>getTodoInfo(){
+		
+		return calendarMapper.getTodoInfo();
+	}
+	public List<ToDoComplete>getComplete(){
+		return calendarMapper.getComplete();
 	}
 	
 
