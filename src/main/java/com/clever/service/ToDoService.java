@@ -63,6 +63,11 @@ public class ToDoService {
 		return toDoMapper.toDoList(cate_seq);
 	}
 	
+	// 완료한 할일 가져오기
+	public List<ToDo> doneList (int cate_seq){
+		return toDoMapper.doneList(cate_seq);
+	}
+	
 	// 할일 수정
 	public ToDo editTodo(ToDo todo_info){
 		return toDoMapper.editTodo(todo_info);

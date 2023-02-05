@@ -49,6 +49,10 @@ public interface ToDoMapper {
 	@Select("select * from tbl_todo where cate_seq = #{cate_seq} ")
 	public List<ToDo> toDoList(int cate_seq);
 	
+	// 완료한 할일 불러오기
+	@Select("select * from tbl_todo tt inner join tbl_complete tc on tt.todo_seq = tc.todo_seq  where tc.cate_seq = #{cate_seq}  ")
+	public List<ToDo> doneList (int cate_seq);
+	
 	// 할 일 수정
 	@Update("update tbl_todo set todo_seq = #{todo_seq}, cate_seq = #{cate_seq}, todo_title = #{todo_title}, todo_content = #{todo_content}, todo_dt = localtimestamp, todo_repeat = #{todo_repeat}, mem_id = #{mem_id}, todo_method = #{todo_method}")
 	public ToDo editTodo(ToDo todo_info);
