@@ -80,6 +80,14 @@ public class ToDoController {
 		List<ToDo> todoList = toDoService.toDoList(todo_info.getCate_seq());
 		return todoList;
 	}
+	
+	// 완료한 할일 불러오기
+	@PostMapping ("/donelist")
+	public List<ToDo> doneList(@RequestBody ToDo done_info) {
+		List<ToDo> comList = toDoService.doneList(done_info.getCate_seq());
+		return comList;
+	}
+	
 
 	// 할 일 수정
 	@PostMapping("/edit")
@@ -94,7 +102,7 @@ public class ToDoController {
     }
 	
 	
-	// 완료된 할 일
+	// 완료된 할 일 상세보기
     @PostMapping("/todocom")
 		public List<ToDoComplete> toDoDetail (@RequestBody ToDo toDoDetail){
 			return toDoService.toDoDetail(toDoDetail);
