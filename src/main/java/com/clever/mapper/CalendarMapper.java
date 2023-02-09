@@ -14,6 +14,9 @@ import org.apache.ibatis.annotations.Update;
 import com.clever.model.Attendance;
 import com.clever.model.ChangeAttendance;
 import com.clever.model.Join;
+import com.clever.model.ToDo;
+import com.clever.model.ToDoComplete;
+
 
 @Mapper
 public interface CalendarMapper {
@@ -55,6 +58,13 @@ public interface CalendarMapper {
 	
 	@Select("SELECT tj.join_seq , tj.group_seq , tj.mem_id, tj.join_dt, tj.cate_seq , tm.mem_name FROM tbl_join tj  INNER JOIN tbl_member tm ON tj.mem_id = tm.mem_id and group_seq=#{group_seq}")
 	List<Join> getWorkerList(int groupSeq);
+	
+	@Select("Select * from tbl_todo")
+	List<ToDo>getTodoInfo();
+	
+	@Select("select * from tbl_complete")
+	List<ToDoComplete>getComplete();
+	
 	
 	
 //(SELECT mem_id from tbl_member  where mem_name = #{mem_name})

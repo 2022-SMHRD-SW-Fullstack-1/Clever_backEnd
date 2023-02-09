@@ -75,17 +75,20 @@ public class ToDoController {
 	}
 
 	// 할일 불러오기
-//	@PostMapping("/todolist")
-//	public List<ToDo> getToDoList(@RequestBody ToDo todo_info){
-//		List<ToDo> todoList = toDoService.toDoList(todo_info.getCate_seq());
-//		return todoList;
-//	}
 	@PostMapping("/todolist")
-	public void getToDoList(@RequestBody ToDo todo_info){
-		System.out.println(todo_info);
+	public List<ToDo> getToDoList(@RequestBody ToDo todo_info){
+		List<ToDo> todoList = toDoService.toDoList(todo_info.getCate_seq());
+		return todoList;
 	}
 	
+	// 완료한 할일 불러오기
+	@PostMapping ("/donelist")
+	public List<ToDo> doneList(@RequestBody ToDo done_info) {
+		List<ToDo> comList = toDoService.doneList(done_info.getCate_seq());
+		return comList;
+	}
 
+	
 	// 할 일 수정
 	@PostMapping("/edit")
 	public ToDo editTodo(@RequestBody ToDo todo_info)  {

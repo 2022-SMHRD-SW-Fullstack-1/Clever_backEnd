@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.clever.model.Attendance;
 import com.clever.model.ChangeAttendance;
 import com.clever.model.Join;
+import com.clever.model.ToDo;
+import com.clever.model.ToDoComplete;
 import com.clever.service.CalendarService;
 
 @CrossOrigin(origins = "*")
@@ -86,8 +88,15 @@ public class CalendarController {
 		return calendarService.getWorkerList(groupSeq);
 		
 	}
+	@GetMapping("/getTodoInfo")
+	public List<ToDo> getTodoInfo(){
+		return calendarService.getTodoInfo();
+	}
 	
-	
-	
+	@GetMapping("/getComplete")
+	public List<ToDoComplete> getComplete(){
+		
+		return calendarService.getComplete();
+	}	
 
 }
